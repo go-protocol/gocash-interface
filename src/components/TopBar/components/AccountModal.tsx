@@ -16,7 +16,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const bacBalance = useTokenBalance(basisCash.GOC);
   const displayBacBalance = useMemo(() => getDisplayBalance(bacBalance), [bacBalance]);
 
-  const basBalance = useTokenBalance(basisCash.GOT);
+  const basBalance = useTokenBalance(basisCash.GOS);
   const displayBasBalance = useMemo(() => getDisplayBalance(basBalance), [basBalance]);
 
   const babBalance = useTokenBalance(basisCash.GOB);
@@ -36,10 +36,10 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
         </StyledBalanceWrapper>
 
         <StyledBalanceWrapper>
-          <TokenSymbol symbol="GOT" />
+          <TokenSymbol symbol="GOS" />
           <StyledBalance>
             <StyledValue>{displayBasBalance}</StyledValue>
-            <Label text="GOT Available" />
+            <Label text="GOS Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
 

@@ -30,11 +30,11 @@ const Stake: React.FC = () => {
   const basisCash = useBasisCash();
   const boardroomVersion = useBoardroomVersion();
   const [approveStatus, approve] = useApprove(
-    basisCash.GOT,
+    basisCash.GOS,
     basisCash.boardroomByVersion(boardroomVersion).address,
   );
 
-  const tokenBalance = useTokenBalance(basisCash.GOT);
+  const tokenBalance = useTokenBalance(basisCash.GOS);
   const stakedBalance = useStakedBalanceOnBoardroom();
   const isOldBoardroomMember = boardroomVersion !== 'latest';
 
@@ -70,7 +70,7 @@ const Stake: React.FC = () => {
         <StyledCardContentInner>
           <StyledCardHeader>
             <CardIcon>
-              <TokenSymbol symbol="GOT" />
+              <TokenSymbol symbol="GOS" />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance)} />
             <Label text="Basis Share Staked" />

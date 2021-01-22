@@ -32,7 +32,7 @@ const Home: React.FC = () => {
   }, [basisCash]);
 
   const cashAddr = useMemo(() => basisCash?.GOC.address, [basisCash]);
-  const shareAddr = useMemo(() => basisCash?.GOT.address, [basisCash]);
+  const shareAddr = useMemo(() => basisCash?.GOS.address, [basisCash]);
   const bondAddr = useMemo(() => basisCash?.GOB.address, [basisCash]);
 
   return (
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
         <Spacer size="lg" />
         <HomeCard
           title="Basis Share"
-          symbol="GOT"
+          symbol="GOS"
           color="#E83725"
           address={shareAddr}
           stat={share}

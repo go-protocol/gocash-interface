@@ -25,7 +25,7 @@ export class BasisCash {
 
   bacDai: Contract;
   GOC: ERC20;
-  GOT: ERC20;
+  GOS: ERC20;
   GOB: ERC20;
 
   constructor(cfg: Configuration) {
@@ -42,7 +42,7 @@ export class BasisCash {
       this.externalTokens[symbol] = new ERC20(address, provider, symbol, decimal); // TODO: add decimal
     }
     this.GOC = new ERC20(deployments.Cash.address, provider, 'GOC');
-    this.GOT = new ERC20(deployments.Share.address, provider, 'GOT');
+    this.GOS = new ERC20(deployments.Share.address, provider, 'GOS');
     this.GOB = new ERC20(deployments.Bond.address, provider, 'GOB');
 
     // Uniswap V2 Pair
@@ -68,7 +68,7 @@ export class BasisCash {
     for (const [name, contract] of Object.entries(this.contracts)) {
       this.contracts[name] = contract.connect(this.signer);
     }
-    const tokens = [this.GOC, this.GOT, this.GOB, ...Object.values(this.externalTokens)];
+    const tokens = [this.GOC, this.GOS, this.GOB, ...Object.values(this.externalTokens)];
     for (const token of tokens) {
       token.connect(this.signer);
     }
@@ -130,15 +130,15 @@ export class BasisCash {
     return Treasury.getSeigniorageOraclePrice();
   }
 
-  async getBondOraclePriceInLastTWAP(): Promise<BigNumber> {
+  async getOraclePriceInLastTWAP(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
-    return Treasury.getBondOraclePrice();
+    return Treasury.getOraclePrice();
   }
 
   async getBondStat(): Promise<TokenStat> {
     const decimals = BigNumber.from(10).pow(18);
 
-    const cashPrice: BigNumber = await this.getBondOraclePriceInLastTWAP();
+    const cashPrice: BigNumber = await this.getOraclePriceInLastTWAP();
     const bondPrice = cashPrice.pow(2).div(decimals);
 
     return {
@@ -149,8 +149,8 @@ export class BasisCash {
 
   async getShareStat(): Promise<TokenStat> {
     return {
-      priceInDAI: await this.getTokenPriceFromUniswap(this.GOT),
-      totalSupply: await this.GOT.displayedTotalSupply(),
+      priceInDAI: await this.getTokenPriceFromUniswap(this.GOS),
+      totalSupply: await this.GOS.displayedTotalSupply(),
     };
   }
 
@@ -181,7 +181,7 @@ export class BasisCash {
     const { Treasury } = this.contracts;
     return await Treasury.buyBonds(
       decimalToBalance(amount),
-      await this.getBondOraclePriceInLastTWAP(),
+      await this.getOraclePriceInLastTWAP(),
     );
   }
 

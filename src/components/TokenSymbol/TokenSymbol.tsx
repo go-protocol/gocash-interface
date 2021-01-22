@@ -12,14 +12,14 @@ import USDTLogo from '../../assets/img/USDT.png';
 const logosBySymbol: {[title: string]: string} = {
   'GOC': bacLogo,
   'GOB': babLogo,
-  'GOT': basLogo,
+  'GOS': basLogo,
   'yCRV': yCRVLogo,
   'DAI': DAILogo,
   'SUSD': sUSDLogo,
   'USDC': USDCLogo,
   'USDT': USDTLogo,
   'GOC_HUSD-GLP': bacLogo,
-  'GOT_HUSD-GLP': basLogo,
+  'GOS_HUSD-GLP': basLogo,
 };
 
 type BasisLogoProps = {

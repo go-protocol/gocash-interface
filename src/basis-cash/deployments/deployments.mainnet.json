@@ -1,6 +1,6 @@
 {
   "BondOracle": {
-    "address": "0x4ff05456ba42733a7AEfbb3bB91181a487cCD9E1",
+    "address": "0x53906fBa68299450dfa3Fc2B59563882D8286e55",
     "abi": [
       {
         "inputs": [
@@ -457,7 +457,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0xbfC15E01ED0171a3212667346c4e292C06F24452",
+    "address": "0x53906fBa68299450dfa3Fc2B59563882D8286e55",
     "abi": [
       {
         "inputs": [
@@ -914,7 +914,7 @@
     ]
   },
   "Cash": {
-    "address": "0xddda2edf140ce5bc3f2987312d8b64f429dadadf",
+    "address": "0x271B54EBe36005A7296894F819D626161C44825C",
     "abi": [
       {
         "inputs": [],
@@ -1368,7 +1368,7 @@
     ]
   },
   "Bond": {
-    "address": "0x7D09a4386321b3B72c2ee0ac2B6950287A4753Bc",
+    "address": "0xaC42E32D530d5e3efD74411547021b5791fAF77A",
     "abi": [
       {
         "inputs": [],
@@ -1822,7 +1822,7 @@
     ]
   },
   "Share": {
-    "address": "0x411c71e1a08b5c3831cafe68a808f00b8ed03188",
+    "address": "0x36b29B53c483bd00978D40126E614bb7e45d8354",
     "abi": [
       {
         "inputs": [],
@@ -2275,8 +2275,345 @@
       }
     ]
   },
+  "lpBoardroom": {
+    "address": "0x8899b4d77E06A33CBB940A3B20658c65e4295D52",
+    "abi": [
+      {
+        "inputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "_cash",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IERC20",
+            "name": "_share",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOperator",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOperator",
+            "type": "address"
+          }
+        ],
+        "name": "OperatorTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "reward",
+            "type": "uint256"
+          }
+        ],
+        "name": "RewardAdded",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "reward",
+            "type": "uint256"
+          }
+        ],
+        "name": "RewardPaid",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "Staked",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "Withdrawn",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "isOperator",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [],
+        "name": "operator",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newOperator_",
+            "type": "address"
+          }
+        ],
+        "name": "transferOperator",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "totalShare",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "director",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "director",
+            "type": "address"
+          }
+        ],
+        "name": "getAppointmentTimeOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "director",
+            "type": "address"
+          }
+        ],
+        "name": "earned",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [],
+        "name": "claimReward",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "stake",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "exit",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "allocateSeigniorage",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ]
+  },
   "Boardroom3": {
-    "address": "0x1DBB86D56Cfd09DF76B90fa44A88e0Fb4D729eF7",
+    "address": "0x834Ef52d85D457989001bD0dE830fbC4Bf7D6eFb",
     "abi": [
       {
         "inputs": [
@@ -2613,7 +2950,7 @@
     ]
   },
   "Boardroom2": {
-    "address": "0x1DBB86D56Cfd09DF76B90fa44A88e0Fb4D729eF7",
+    "address": "0x834Ef52d85D457989001bD0dE830fbC4Bf7D6eFb",
     "abi": [
       {
         "inputs": [
@@ -2950,7 +3287,7 @@
     ]
   },
   "Boardroom1": {
-    "address": "0x1DBB86D56Cfd09DF76B90fa44A88e0Fb4D729eF7",
+    "address": "0x834Ef52d85D457989001bD0dE830fbC4Bf7D6eFb",
     "abi": [
       {
         "inputs": [
@@ -3287,7 +3624,7 @@
     ]
   },
   "Treasury": {
-    "address": "0xfA5fC61343feA52C28D7D24952aB336f38CB8901",
+    "address": "0x6Cd061ABeaDe987cd16E1674497d809Dc0eFA64E",
     "abi": [
       {
         "inputs": [
@@ -3826,7 +4163,7 @@
       },
       {
         "inputs": [],
-        "name": "getBondOraclePrice",
+        "name": "getOraclePrice",
         "outputs": [
           {
             "internalType": "uint256",
@@ -4205,7 +4542,7 @@
     ]
   },
   "HUSDGOCLPTokenSharePool": {
-    "address": "0xfD10E18a6059E435F7186E78daAA4CA6c6062e3D",
+    "address": "0xC33F68fBBCB529faB10aB5FcFD77BaD7cE9fbfFA",
     "abi": [
       {
         "inputs": [
@@ -4681,8 +5018,8 @@
       }
     ]
   },
-  "HUSDGOTLPTokenSharePool": {
-    "address": "0xea43EcA6791e03cEF20B27f3Cd4e74f8aF10447A",
+  "HUSDGOSLPTokenSharePool": {
+    "address": "0x85C0594364353B888E4213E33dbD8Ecd653506a4",
     "abi": [
       {
         "inputs": [
