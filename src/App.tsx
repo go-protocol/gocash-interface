@@ -22,7 +22,7 @@ import Popups from './components/Popups';
 const App: React.FC = () => {
   return (
     <Providers>
-      <Router basename="/gocash-interface">
+      <Router>
         <Switch>
           <Route path="/" exact>
             <Home />
