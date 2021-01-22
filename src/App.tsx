@@ -22,7 +22,7 @@ import Popups from './components/Popups';
 const App: React.FC = () => {
   return (
     <Providers>
-      <Router>
+      <Router basename="/">
         <Switch>
           <Route path="/" exact>
             <Home />
