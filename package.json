@@ -1,7 +1,7 @@
 {
   "name": "gocash",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "https://cash.goswap.app/",
   "private": true,
   "dependencies": {
     "@ethersproject/providers": "^5.0.9",
