@@ -18,7 +18,6 @@ const Bank: React.FC = () => {
 
   const { bankId } = useParams();
   const bank = useBank(bankId);
-
   const { account } = useWallet();
   const { onRedeem } = useRedeem(bank);
 

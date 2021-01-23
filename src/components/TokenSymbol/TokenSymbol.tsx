@@ -8,6 +8,7 @@ import DAILogo from '../../assets/img/DAI.png';
 import sUSDLogo from '../../assets/img/sUSD.png';
 import USDCLogo from '../../assets/img/USDC.png';
 import USDTLogo from '../../assets/img/USDT.png';
+import GOTLogo from '../../assets/img/Goswap-logo-GOT.png';
 
 const logosBySymbol: {[title: string]: string} = {
   'GOC': bacLogo,
@@ -20,6 +21,7 @@ const logosBySymbol: {[title: string]: string} = {
   'USDT': USDTLogo,
   'GOC_HUSD-GLP': bacLogo,
   'GOS_HUSD-GLP': basLogo,
+  'HT_HUSD-GLP': GOTLogo,
 };
 
 type BasisLogoProps = {
