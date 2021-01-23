@@ -6,16 +6,17 @@ import { BigNumber } from 'ethers';
 import useHandleTransactionReceipt from './useHandleTransactionReceipt';
 import config from '../config';
 
-const useWithdrawFromBoardroom = () => {
-  const [canWithdraw, setCanWithdraw] = useState<Boolean>();
+const useWithdrawFromLpBoardroom = () => {
+  const [canWithdrawLp, setCanWithdraw] = useState<Boolean>();
   const [canWithdrawTime, setCanWithdrawTime] = useState(BigNumber.from(0));
   const basisCash = useBasisCash();
   const handleTransactionReceipt = useHandleTransactionReceipt();
 
   const getCanWithdraw = useCallback(async () => {
-    setCanWithdraw(await basisCash.canWithdrawFromBoardroom());
-    setCanWithdrawTime(await basisCash.canWithdrawTimeFromBoardroom());
+    setCanWithdraw(await basisCash.canWithdrawFromLpBoardroom());
+    setCanWithdrawTime(await basisCash.canWithdrawTimeFromLpBoardroom());
   }, [basisCash?.isUnlocked]);
+
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -28,13 +29,13 @@ const useWithdrawFromBoardroom = () => {
   const handleWithdraw = useCallback(
     (amount: string) => {
       handleTransactionReceipt(
-        basisCash.withdrawShareFromBoardroom(amount),
+        basisCash.withdrawShareFromLpBoardroom(amount),
         `Withdraw ${amount} BAS from the boardroom`,
       );
     },
     [basisCash],
   );
-  return { onWithdraw: handleWithdraw, canWithdraw,canWithdrawTime };
+  return { onWithdraw: handleWithdraw, canWithdrawLp,canWithdrawTime };
 };
 
-export default useWithdrawFromBoardroom;
+export default useWithdrawFromLpBoardroom;

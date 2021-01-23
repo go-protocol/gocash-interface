@@ -19,29 +19,27 @@ import { getDisplayBalance } from '../../../utils/formatBalance';
 import DepositModal from './DepositModal';
 import WithdrawModal from './WithdrawModal';
 import useBasisCash from '../../../hooks/useBasisCash';
-import useStakedBalanceOnBoardroom from '../../../hooks/useStakedBalanceOnBoardroom';
+import useStakedBalanceOnLpBoardroom from '../../../hooks/useStakedBalanceOnLpBoardroom';
 import TokenSymbol from '../../../components/TokenSymbol';
-import useStakeToBoardroom from '../../../hooks/useStakeToBoardroom';
-import useWithdrawFromBoardroom from '../../../hooks/useWithdrawFromBoardroom';
-import useBoardroomVersion from '../../../hooks/useBoardroomVersion';
-import useRedeemOnBoardroom from '../../../hooks/useRedeemOnBoardroom';
+import useStakeToLpBoardroom from '../../../hooks/useStakeToLpBoardroom';
+import useWithdrawFromLpBoardroom from '../../../hooks/useWithdrawFromLpBoardroom';
+import useRedeemOnLpBoardroom from '../../../hooks/useRedeemOnLpBoardroom';
 import moment from 'moment';
 
 const Stake: React.FC = () => {
   const basisCash = useBasisCash();
-  const boardroomVersion = useBoardroomVersion();
+  // const boardroomVersion = useBoardroomVersion();
   const [approveStatus, approve] = useApprove(
-    basisCash.GOS,
-    basisCash.boardroomByVersion(boardroomVersion).address,
+    basisCash.GOSLP,
+    basisCash.boardroomByVersion('lp').address,
   );
-
-  const tokenBalance = useTokenBalance(basisCash.GOS);
-  const stakedBalance = useStakedBalanceOnBoardroom();
+  const tokenBalance = useTokenBalance(basisCash.GOSLP);
+  const stakedBalance = useStakedBalanceOnLpBoardroom();
   // const isOldBoardroomMember = boardroomVersion !== 'latest';
 
-  const { onStake } = useStakeToBoardroom();
-  const { onWithdraw, canWithdraw, canWithdrawTime  } = useWithdrawFromBoardroom();
-  const { onRedeem } = useRedeemOnBoardroom('Redeem BAS for Boardroom Migration');
+  const { onStake } = useStakeToLpBoardroom();
+  const { onWithdraw, canWithdrawLp, canWithdrawTime } = useWithdrawFromLpBoardroom();
+  const { onLpRedeem } = useRedeemOnLpBoardroom('Redeem BAS for Boardroom Migration');
   const _canWithdrawTime = new Date(canWithdrawTime.mul(1000).toNumber());
 
   const withdrawTime = useMemo(() => moment(_canWithdrawTime).utc().startOf('hour').toDate(), [_canWithdrawTime]);
@@ -77,18 +75,18 @@ const Stake: React.FC = () => {
               <TokenSymbol symbol="GOS" />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance)} />
-            <Label text="Basis Share Staked" />
+            <Label text="Basis Share LP Staked" />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
               <Button
                 disabled={approveStatus !== ApprovalState.NOT_APPROVED}
                 onClick={approve}
-                text="Approve Basis Share"
+                text="Approve Basis Share LP"
               />
             ) : (
                 <>
-                  {canWithdraw ? (
+                  {canWithdrawLp ? (
                     <IconButton onClick={onPresentWithdraw}>
                       <RemoveIcon />
                     </IconButton>

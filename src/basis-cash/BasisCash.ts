@@ -27,6 +27,7 @@ export class BasisCash {
   GOC: ERC20;
   GOS: ERC20;
   GOB: ERC20;
+  GOSLP: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -44,6 +45,7 @@ export class BasisCash {
     this.GOC = new ERC20(deployments.Cash.address, provider, 'GOC');
     this.GOS = new ERC20(deployments.Share.address, provider, 'GOS');
     this.GOB = new ERC20(deployments.Bond.address, provider, 'GOB');
+    this.GOSLP = new ERC20(deployments.GosLp.address, provider, 'GLP:GOS-HUSD');
 
     // Uniswap V2 Pair
     this.bacDai = new Contract(
@@ -68,7 +70,7 @@ export class BasisCash {
     for (const [name, contract] of Object.entries(this.contracts)) {
       this.contracts[name] = contract.connect(this.signer);
     }
-    const tokens = [this.GOC, this.GOS, this.GOB, ...Object.values(this.externalTokens)];
+    const tokens = [this.GOC, this.GOS, this.GOB, this.GOSLP, ...Object.values(this.externalTokens)];
     for (const token of tokens) {
       token.connect(this.signer);
     }
@@ -279,13 +281,10 @@ export class BasisCash {
   }
 
   boardroomByVersion(version: string): Contract {
-    if (version === 'v1') {
-      return this.contracts.Boardroom1;
+    if (version === 'lp') {
+      return this.contracts.lpBoardroom;
     }
-    if (version === 'v2') {
-      return this.contracts.Boardroom2;
-    }
-    return this.contracts.Boardroom3;
+    return this.contracts.shareBoardroom;
   }
 
   currentBoardroom(): Contract {
@@ -294,32 +293,43 @@ export class BasisCash {
     }
     return this.boardroomByVersion(this.boardroomVersionOfUser);
   }
+  currentLpBoardroom(): Contract {
+    if (!this.boardroomVersionOfUser) {
+      throw new Error('you must unlock the wallet to continue.');
+    }
+    return this.boardroomByVersion('lp');
+  }
 
   isOldBoardroomMember(): boolean {
     return this.boardroomVersionOfUser !== 'latest';
   }
 
   async stakeShareToBoardroom(amount: string): Promise<TransactionResponse> {
-    if (this.isOldBoardroomMember()) {
-      throw new Error("you're using old Boardroom. please withdraw and deposit the BAS again.");
-    }
     const Boardroom = this.currentBoardroom();
+    return await Boardroom.stake(decimalToBalance(amount));
+  }
+
+  async stakeShareToLpBoardroom(amount: string): Promise<TransactionResponse> {
+    const Boardroom = this.currentLpBoardroom();
     return await Boardroom.stake(decimalToBalance(amount));
   }
 
   async getStakedSharesOnBoardroom(): Promise<BigNumber> {
     const Boardroom = this.currentBoardroom();
-    if (this.boardroomVersionOfUser === 'v1') {
-      return await Boardroom.getShareOf(this.myAccount);
-    }
+    return await Boardroom.balanceOf(this.myAccount);
+  }
+  async getStakedSharesOnLpBoardroom(): Promise<BigNumber> {
+    const Boardroom = this.currentLpBoardroom();
     return await Boardroom.balanceOf(this.myAccount);
   }
 
   async getEarningsOnBoardroom(): Promise<BigNumber> {
     const Boardroom = this.currentBoardroom();
-    if (this.boardroomVersionOfUser === 'v1') {
-      return await Boardroom.getCashEarningsOf(this.myAccount);
-    }
+    return await Boardroom.earned(this.myAccount);
+  }
+
+  async getEarningsOnLpBoardroom(): Promise<BigNumber> {
+    const Boardroom = this.currentLpBoardroom();
     return await Boardroom.earned(this.myAccount);
   }
 
@@ -328,16 +338,46 @@ export class BasisCash {
     return await Boardroom.withdraw(decimalToBalance(amount));
   }
 
+  async withdrawShareFromLpBoardroom(amount: string): Promise<TransactionResponse> {
+    const Boardroom = this.currentLpBoardroom();
+    return await Boardroom.withdraw(decimalToBalance(amount));
+  }
+
+  async canWithdrawFromBoardroom(): Promise<Boolean> {
+    const Boardroom = this.currentBoardroom();
+    return await Boardroom.canWithdraw(this.myAccount);
+  }
+
+  async canWithdrawFromLpBoardroom(): Promise<Boolean> {
+    const Boardroom = this.currentLpBoardroom();
+    return await Boardroom.canWithdraw(this.myAccount);
+  }
+
+  async canWithdrawTimeFromBoardroom(): Promise<BigNumber> {
+    const Boardroom = this.currentBoardroom();
+    return await Boardroom.getCanWithdrawTime(this.myAccount);
+  }
+
+  async canWithdrawTimeFromLpBoardroom(): Promise<BigNumber> {
+    const Boardroom = this.currentLpBoardroom();
+    return await Boardroom.getCanWithdrawTime(this.myAccount);
+  }
+
   async harvestCashFromBoardroom(): Promise<TransactionResponse> {
     const Boardroom = this.currentBoardroom();
-    if (this.boardroomVersionOfUser === 'v1') {
-      return await Boardroom.claimDividends();
-    }
+    return await Boardroom.claimReward();
+  }
+  async harvestCashFromLpBoardroom(): Promise<TransactionResponse> {
+    const Boardroom = this.currentLpBoardroom();
     return await Boardroom.claimReward();
   }
 
   async exitFromBoardroom(): Promise<TransactionResponse> {
     const Boardroom = this.currentBoardroom();
+    return await Boardroom.exit();
+  }
+  async exitFromLpBoardroom(): Promise<TransactionResponse> {
+    const Boardroom = this.currentLpBoardroom();
     return await Boardroom.exit();
   }
 

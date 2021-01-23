@@ -6,11 +6,17 @@ import Button from '../../components/Button';
 import PageHeader from '../../components/PageHeader';
 import Spacer from '../../components/Spacer';
 import Harvest from './components/Harvest';
+import LpHarvest from './components/LpHarvest';
 import Stake from './components/Stake';
+import LpStake from './components/LpStake';
 import { Switch } from 'react-router-dom';
 import Page from '../../components/Page';
 import useRedeemOnBoardroom from '../../hooks/useRedeemOnBoardroom';
+import useRedeemOnLpBoardroom from '../../hooks/useRedeemOnLpBoardroom';
 import useStakedBalanceOnBoardroom from '../../hooks/useStakedBalanceOnBoardroom';
+import useStakedBalanceOnLpBoardroom from '../../hooks/useStakedBalanceOnLpBoardroom';
+import useWithdrawFromBoardroom from '../../hooks/useWithdrawFromBoardroom';
+import useWithdrawFromLpBoardroom from '../../hooks/useWithdrawFromLpBoardroom';
 
 import config from '../../config';
 import LaunchCountdown from '../../components/LaunchCountdown';
@@ -29,7 +35,11 @@ const Boardroom: React.FC = () => {
   useEffect(() => window.scrollTo(0, 0));
   const { account } = useWallet();
   const { onRedeem } = useRedeemOnBoardroom();
+  const { onLpRedeem } = useRedeemOnLpBoardroom();
   const stakedBalance = useStakedBalanceOnBoardroom();
+  const stakedLpBalance = useStakedBalanceOnLpBoardroom();
+  const { canWithdraw } = useWithdrawFromBoardroom();
+  const { canWithdrawLp } = useWithdrawFromLpBoardroom();
 
   const cashStat = useCashPriceInEstimatedTWAP();
   const treasuryAmount = useTreasuryAmount();
@@ -49,7 +59,7 @@ const Boardroom: React.FC = () => {
   const nextEpoch = useMemo(() => moment(prevEpoch).add(8, 'hour').toDate(), [prevEpoch]);
 
   const boardroomVersion = useBoardroomVersion();
-  const usingOldBoardroom = boardroomVersion !== 'latest';
+  // const usingOldBoardroom = boardroomVersion !== 'latest';
   const migrateNotice = useMemo(() => {
     if (boardroomVersion === 'v2') {
       return (
@@ -135,24 +145,37 @@ const Boardroom: React.FC = () => {
                 </StyledCardWrapper>
               </StyledCardsWrapper>
               <Spacer size="lg" />
-              {!usingOldBoardroom && (
-                // for old boardroom users, the button is displayed in Stake component
-                <>
-                  <div>
-                    <Button
-                      disabled={stakedBalance.eq(0)}
-                      onClick={onRedeem}
-                      text="Settle & Withdraw"
-                    />
-                  </div>
-                  <Spacer size="lg" />
-                </>
-              )}
+              {canWithdraw && (<><div>
+                <Button
+                  disabled={stakedBalance.eq(0)}
+                  onClick={onRedeem}
+                  text="Settle & Withdraw"
+                />
+              </div>
+                <Spacer size="lg" /></>) }
+              <StyledCardsWrapper>
+                <StyledCardWrapper>
+                  <LpHarvest />
+                </StyledCardWrapper>
+                <Spacer />
+                <StyledCardWrapper>
+                  <LpStake />
+                </StyledCardWrapper>
+              </StyledCardsWrapper>
+              <Spacer size="lg" />
+              {canWithdrawLp && (<><div>
+                <Button
+                  disabled={stakedLpBalance.eq(0)}
+                  onClick={onLpRedeem}
+                  text="Settle & Withdraw"
+                />
+              </div>
+                <Spacer size="lg" /></>) }
             </StyledBoardroom>
           </>
         ) : (
-          <UnlockWallet />
-        )}
+            <UnlockWallet />
+          )}
       </Page>
     </Switch>
   );
