@@ -22,6 +22,7 @@ const logosBySymbol: {[title: string]: string} = {
   'GOC_HUSD-GLP': bacLogo,
   'GOS_HUSD-GLP': basLogo,
   'HT_HUSD-GLP': GOTLogo,
+  'GOT_HUSD-GLP': GOTLogo,
 };
 
 type BasisLogoProps = {

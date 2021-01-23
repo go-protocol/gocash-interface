@@ -184,6 +184,7 @@ const StyledCardWrapper = styled.div`
   display: flex;
   width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
   position: relative;
+  margin-bottom: 20px;
 `;
 
 const StyledTitle = styled.h4`

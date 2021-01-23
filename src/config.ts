@@ -20,6 +20,7 @@ const configurations: { [env: string]: Configuration } = {
       'GOS_HUSD-GLP': ['0xd0E8D781fAe230E3DA6e45ED881c99BA639cA400', 18],
       'GOC_HUSD-GLP': ['0x28BFcd3c234B710d93232B5e51a2e8b8a5bb9D2f', 18],
       'HT_HUSD-GLP': ['0xBe963435F750bB60e45fFa98318E74ea6E3aC0d7', 18],
+      'GOT_HUSD-GLP': ['0xC31b9f33fB2C54B789C263781CCEE9b23b747677', 18],
     },
     baseLaunchDate: new Date('2020-11-26T00:00:00Z'),
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
@@ -42,6 +43,7 @@ const configurations: { [env: string]: Configuration } = {
       'GOS_HUSD-GLP': ['0xd0E8D781fAe230E3DA6e45ED881c99BA639cA400', 18],
       'GOC_HUSD-GLP': ['0x28BFcd3c234B710d93232B5e51a2e8b8a5bb9D2f', 18],
       'HT_HUSD-GLP': ['0xBe963435F750bB60e45fFa98318E74ea6E3aC0d7', 18],
+      'GOT_HUSD-GLP': ['0xC31b9f33fB2C54B789C263781CCEE9b23b747677', 18],
     },
     baseLaunchDate: new Date('2020-11-29T23:00:00Z'),
     bondLaunchesAt: new Date('2020-12-05T00:00:00Z'),
@@ -75,6 +77,14 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'GOT',
     finished: false,
     sort: 3,
+  },
+  GOTHUSDLPTokenGOTPool: {
+    name: 'Earn GOT by GOT-HUSD-LP',
+    contract: 'GOTHUSDLPTokenGOTPool',
+    depositTokenName: 'GOT_HUSD-GLP',
+    earnTokenName: 'GOT',
+    finished: false,
+    sort: 4,
   },
 };
 // export default configurations[process.env.NODE_ENV || "development"];
