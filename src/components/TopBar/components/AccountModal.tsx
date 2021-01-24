@@ -24,14 +24,14 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
   return (
     <Modal>
-      <ModalTitle text="My Wallet" />
+      <ModalTitle text="我的钱包" />
 
       <Balances>
         <StyledBalanceWrapper>
           <TokenSymbol symbol="GOC" />
           <StyledBalance>
             <StyledValue>{displayBacBalance}</StyledValue>
-            <Label text="GOC Available" />
+            <Label text="GOC 余额" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
@@ -39,7 +39,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           <TokenSymbol symbol="GOS" />
           <StyledBalance>
             <StyledValue>{displayBasBalance}</StyledValue>
-            <Label text="GOS Available" />
+            <Label text="GOS 余额" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
@@ -47,7 +47,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           <TokenSymbol symbol="GOB" />
           <StyledBalance>
             <StyledValue>{displayBabBalance}</StyledValue>
-            <Label text="GOB Available" />
+            <Label text="GOB 余额" />
           </StyledBalance>
         </StyledBalanceWrapper>
       </Balances>

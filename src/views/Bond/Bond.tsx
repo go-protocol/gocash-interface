@@ -34,7 +34,7 @@ const Bond: React.FC = () => {
       const tx = await basisCash.buyBonds(amount);
       const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice));
       addTransaction(tx, {
-        summary: `Buy ${bondAmount.toFixed(2)} GOB with ${amount} GOC`,
+        summary: `使用 ${amount} GOC 购买 ${bondAmount.toFixed(2)} GOB`,
       });
     },
     [basisCash, addTransaction, cashPrice],
@@ -43,7 +43,7 @@ const Bond: React.FC = () => {
   const handleRedeemBonds = useCallback(
     async (amount: string) => {
       const tx = await basisCash.redeemBonds(amount);
-      addTransaction(tx, { summary: `Redeem ${amount} GOB` });
+      addTransaction(tx, { summary: `赎回 ${amount} GOB` });
     },
     [basisCash, addTransaction],
   );

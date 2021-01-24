@@ -10,7 +10,7 @@ const useHarvest = (bank: Bank) => {
   const handleReward = useCallback(() => {
     handleTransactionReceipt(
       basisCash.harvest(bank.contract),
-      `Claim ${bank.earnTokenName} from ${bank.contract}`,
+      `从 ${bank.contract} 收获 ${bank.earnTokenName}`,
     );
   }, [bank, basisCash]);
 

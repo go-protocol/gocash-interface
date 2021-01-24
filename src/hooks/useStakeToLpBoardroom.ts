@@ -10,7 +10,7 @@ const useStakeToLpBoardroom = () => {
     (amount: string) => {
       handleTransactionReceipt(
         basisCash.stakeShareToLpBoardroom(amount),
-        `Stake ${amount} BAS to the boardroom`,
+        `质押 ${amount} GOS 到董事会`,
       );
     },
     [basisCash],

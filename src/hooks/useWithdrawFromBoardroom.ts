@@ -29,7 +29,7 @@ const useWithdrawFromBoardroom = () => {
     (amount: string) => {
       handleTransactionReceipt(
         basisCash.withdrawShareFromBoardroom(amount),
-        `Withdraw ${amount} BAS from the boardroom`,
+        `从董事会取出 ${amount} GOS`,
       );
     },
     [basisCash],

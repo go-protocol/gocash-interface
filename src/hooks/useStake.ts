@@ -13,7 +13,7 @@ const useStake = (bank: Bank) => {
       const amountBn = parseUnits(amount, bank.depositToken.decimal);
       handleTransactionReceipt(
         basisCash.stake(bank.contract, amountBn),
-        `Stake ${amount} ${bank.depositTokenName} to ${bank.contract}`,
+        `质押 ${amount} ${bank.depositTokenName} 到 ${bank.contract}`,
       );
     },
     [bank, basisCash],
