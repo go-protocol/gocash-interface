@@ -4,9 +4,9 @@ import styled from 'styled-components'
 const Nav: React.FC = () => {
   return (
     <StyledNav>
-      <StyledLink href= {buyBAS} target="_blank">Get GOS</StyledLink>
-      <StyledLink href= {buyBAC} target="_blank">Get GOC</StyledLink>
-      <StyledLink href="https://github.com/Basis-Cash" target="_blank">GitHub</StyledLink>
+      <StyledLink href= {buyGOS} target="_blank">获取GoCash股份GOS</StyledLink>
+      <StyledLink href= {buyGOC} target="_blank">获取GoCash现金GOC</StyledLink>
+      <StyledLink href="https://github.com/go-protocol/gocash-core" target="_blank">GitHub</StyledLink>
       <StyledLink href="https://twitter.com/BasisCash" target="_blank">Twitter</StyledLink>
       <StyledLink href="https://t.me/basiscash" target="_blank">Telegram</StyledLink>
       <StyledLink href="https://discord.gg/UEZq3HF5Eu" target="_blank">Discord</StyledLink>
@@ -30,6 +30,6 @@ const StyledLink = styled.a`
     color: ${props => props.theme.color.grey[500]};
   }
 `
-const buyBAS ="https://uniswap.exchange/swap?inputCurrency=0x6b175474e89094c44da98b954eedeac495271d0f&outputCurrency=0xa7ed29b253d8b4e3109ce07c80fc570f81b63696";
-const buyBAC= "https://uniswap.exchange/swap?inputCurrency=0x3449fc1cd036255ba1eb19d65ff4ba2b8903a69a&outputCurrency=0x6b175474e89094c44da98b954eedeac495271d0f"
+const buyGOS ="https://www.goswap.app/#/swap?inputCurrency=0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6&outputCurrency=0x36b29B53c483bd00978D40126E614bb7e45d8354";
+const buyGOC= "https://www.goswap.app/#/swap?inputCurrency=0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6&outputCurrency=0x271B54EBe36005A7296894F819D626161C44825C"
 export default Nav

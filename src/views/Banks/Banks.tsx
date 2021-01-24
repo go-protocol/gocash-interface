@@ -18,14 +18,14 @@ const Banks: React.FC = () => {
         <Route exact path={path}>
           <PageHeader
             icon={'🏦'}
-            title="Pick a Bank."
-            subtitle="Earn Basis Shares by providing liquidity"
+            title="选择一条赛道."
+            subtitle="通过提供GoSwap流动性赚取收益"
           />
           {!!account ? (
             <BankCards />
           ) : (
             <Center>
-              <Button onClick={() => connect('injected')} text="Unlock Wallet" />
+              <Button onClick={() => connect('injected')} text="解锁钱包" />
             </Center>
           )}
         </Route>

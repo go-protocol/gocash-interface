@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Contract } from 'ethers';
+// import { Contract } from 'ethers';
 
 import Button from '../../../components/Button';
 import Card from '../../../components/Card';
@@ -24,8 +24,6 @@ interface HarvestProps {
 const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnings = useEarnings(bank.contract);
   const { onReward } = useHarvest(bank);
-
-  const tokenName = bank.earnTokenName === 'GOS' ? 'Share' : 'Cash';
   return (
     <Card>
       <CardContent>
@@ -35,10 +33,10 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
               <TokenSymbol symbol={bank.earnToken.symbol} />
             </CardIcon>
             <Value value={getDisplayBalance(earnings)} />
-            <Label text={`Basis ${tokenName} Earned`} />
+            <Label text={`赚到的${bank.earnTokenName}`} />
           </StyledCardHeader>
           <StyledCardActions>
-            <Button onClick={onReward} disabled={earnings.eq(0)} text="Settle"  />
+            <Button onClick={onReward} disabled={earnings.eq(0)} text="收获"  />
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
@@ -58,10 +56,10 @@ const StyledCardActions = styled.div`
   width: 100%;
 `;
 
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`;
+// const StyledSpacer = styled.div`
+//   height: ${(props) => props.theme.spacing[4]}px;
+//   width: ${(props) => props.theme.spacing[4]}px;
+// `;
 
 const StyledCardContentInner = styled.div`
   align-items: center;

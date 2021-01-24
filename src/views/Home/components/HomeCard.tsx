@@ -21,7 +21,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   symbol,
   color,
   address,
-  supplyLabel = 'Total Supply',
+  supplyLabel = '总供应量',
   stat,
 }) => {
   const tokenUrl = `${config.etherscanUrl}/token/${address}`;
@@ -36,7 +36,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
           ) : (
             <ValueSkeleton />
           )}
-          <Label text="Current Price" color={color} />
+          <Label text="当前价格" color={color} />
         </CardSection>
 
         <CardSection>
@@ -107,16 +107,16 @@ const ValueSkeleton = () => {
   );
 };
 
-const GuideText = styled.span`
-  color: ${(props) => props.theme.color.primary.main};
-  font-size: 0.8rem;
-`;
+// const GuideText = styled.span`
+//   color: ${(props) => props.theme.color.primary.main};
+//   font-size: 0.8rem;
+// `;
 
-const ValueText = styled.p`
-  color: ${(props) => props.theme.color.white};
-  font-weight: bold;
-  font-size: 1.25rem;
-  margin: ${(props) => props.theme.spacing[1]}px 0;
-`;
+// const ValueText = styled.p`
+//   color: ${(props) => props.theme.color.white};
+//   font-weight: bold;
+//   font-size: 1.25rem;
+//   margin: ${(props) => props.theme.spacing[1]}px 0;
+// `;
 
 export default HomeCard;

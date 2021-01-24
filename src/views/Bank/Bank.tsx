@@ -25,7 +25,7 @@ const Bank: React.FC = () => {
     <>
       <PageHeader
         icon="🏦"
-        subtitle={`Deposit ${bank?.depositTokenName} and earn ${bank?.earnTokenName}`}
+        subtitle={`存入 ${bank?.depositTokenName} 赚取 ${bank?.earnTokenName}`}
         title={bank?.name}
       />
       <StyledBank>
@@ -39,10 +39,10 @@ const Bank: React.FC = () => {
           </StyledCardWrapper>
         </StyledCardsWrapper>
         <Spacer size="lg" />
-        {bank.depositTokenName.includes('LP') && <LPTokenHelpText bank={bank} />}
+         <LPTokenHelpText bank={bank} />
         <Spacer size="lg" />
         <div>
-          <Button onClick={onRedeem} text="Settle & Withdraw" />
+          <Button onClick={onRedeem} text="取出本金和收益" />
         </div>
         <Spacer size="lg" />
       </StyledBank>
@@ -55,18 +55,9 @@ const Bank: React.FC = () => {
 };
 
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
-  let pairName: string;
-  let uniswapUrl: string;
-  if (bank.depositTokenName.includes('GOC')) {
-    pairName = 'BAC-DAI pair';
-    uniswapUrl = 'https://app.uniswap.org/#/add/0x3449FC1Cd036255BA1EB19d65fF4BA2b8903A69a/0x6B175474E89094C44Da98b954EedeAC495271d0F';
-  } else {
-    pairName = 'BAS-DAI pair';
-    uniswapUrl = 'https://app.uniswap.org/#/add/0xa7ED29B253D8B4E3109ce07c80fc570f81B63696/0x6B175474E89094C44Da98b954EedeAC495271d0F';
-  }
   return (
-    <StyledLink href={uniswapUrl} target="_blank">
-      {`🦄  Provide liquidity to ${pairName} on Uniswap  🦄`}
+    <StyledLink href={bank.pairUrl} target="_blank">
+      {`🦄  在GoSwap为 ${bank.pairName} 交易对提供流动性  🦄`}
     </StyledLink>
   );
 };
@@ -76,8 +67,8 @@ const BankNotFound = () => {
     <Center>
       <PageHeader
         icon="🏚"
-        title="Not Found"
-        subtitle="You've hit a bank just robbed by unicorns."
+        title="没有赛道"
+        subtitle="目前所有的赛道禁行"
       />
     </Center>
   );
@@ -87,7 +78,7 @@ const UnlockWallet = () => {
   const { connect } = useWallet();
   return (
     <Center>
-      <Button onClick={() => connect('injected')} text="Unlock Wallet" />
+      <Button onClick={() => connect('injected')} text="解锁钱包" />
     </Center>
   );
 };
@@ -101,9 +92,9 @@ const StyledBank = styled.div`
   }
 `;
 
-const StyledUniswapLPGuide = styled.div`
-  margin: -24px auto 48px;
-`;
+// const StyledUniswapLPGuide = styled.div`
+//   margin: -24px auto 48px;
+// `;
 
 const StyledLink = styled.a`
   font-weight: 700;

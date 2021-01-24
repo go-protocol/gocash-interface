@@ -71,14 +71,14 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
               <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
-            <Label text={`${bank.depositTokenName} Staked`} />
+            <Label text={`质押的${bank.depositTokenName}`} />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
               <Button
                 disabled={
-                  approveStatus == ApprovalState.PENDING ||
-                  approveStatus == ApprovalState.UNKNOWN
+                  approveStatus === ApprovalState.PENDING ||
+                  approveStatus === ApprovalState.UNKNOWN
                 }
                 onClick={approve}
                 text={`Approve ${bank.depositTokenName}`}

@@ -1,8 +1,8 @@
 import { ChainId } from 'goswap-sdk';
 import { Configuration } from './basis-cash/config';
 import { BankInfo } from './basis-cash';
-import { formatUnits } from 'ethers/lib/utils';
-import { BigNumber } from 'ethers';
+// import { formatUnits } from 'ethers/lib/utils';
+// import { BigNumber } from 'ethers';
 
 const configurations: { [env: string]: Configuration } = {
   development: {
@@ -55,35 +55,43 @@ const configurations: { [env: string]: Configuration } = {
 
 export const bankDefinitions: { [contractName: string]: BankInfo } = {
   HUSDGOCLPTokenSharePool: {
-    name: 'Earn GOS by GOC-HUSD-LP',
+    name: '曲率引擎赛道',
     contract: 'HUSDGOCLPTokenSharePool',
     depositTokenName: 'GOC_HUSD-GLP',
     earnTokenName: 'GOS',
     finished: false,
+    pairName:'GOC-HUSD',
+    pairUrl:'https://www.goswap.app/#/add/0x271B54EBe36005A7296894F819D626161C44825C/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
     sort: 1,
   },
   HUSDGOSLPTokenSharePool: {
-    name: 'Earn GOS by GOS-HUSD-LP',
+    name: '引力弹弓赛道',
     contract: 'HUSDGOSLPTokenSharePool',
     depositTokenName: 'GOS_HUSD-GLP',
     earnTokenName: 'GOS',
     finished: false,
+    pairName:'GOS-HUSD',
+    pairUrl:'https://www.goswap.app/#/add/0x36b29B53c483bd00978D40126E614bb7e45d8354/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
     sort: 2,
   },
   HTHUSDLPTokenGOTPool: {
-    name: 'Earn GOT by HT-HUSD-LP',
+    name: '水滴赛道',
     contract: 'HTHUSDLPTokenGOTPool',
     depositTokenName: 'HT_HUSD-GLP',
     earnTokenName: 'GOT',
     finished: false,
+    pairName:'HT-HUSD',
+    pairUrl:'https://www.goswap.app/#/add/CURRENCY/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
     sort: 3,
   },
   GOTHUSDLPTokenGOTPool: {
-    name: 'Earn GOT by GOT-HUSD-LP',
+    name: '可控核聚变赛道',
     contract: 'GOTHUSDLPTokenGOTPool',
     depositTokenName: 'GOT_HUSD-GLP',
     earnTokenName: 'GOT',
     finished: false,
+    pairName:'GOT-HUSD',
+    pairUrl:'https://www.goswap.app/#/add/0xA7d5b5Dbc29ddef9871333AD2295B2E7D6F12391/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
     sort: 4,
   },
 };

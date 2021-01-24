@@ -7,7 +7,7 @@ import HomeCard from './components/HomeCard';
 import { OverviewData } from './types';
 import useBasisCash from '../../hooks/useBasisCash';
 import config from '../../config';
-import Notice from '../../components/Notice';
+// import Notice from '../../components/Notice';
 
 const Home: React.FC = () => {
   const basisCash = useBasisCash();
@@ -39,22 +39,22 @@ const Home: React.FC = () => {
     <Page>
       <PageHeader
         icon="👋"
-        subtitle="Buy, sell, and provide liquidity for Basis Cash and Basis Shares on Uniswap"
-        title="Welcome to Basis Cash!"
+        subtitle="在GoSwap上购买，出售和提供GoCash现金和GoCash股份的流动性"
+        title="欢迎来到 Go Cash!"
       />
       <Spacer size="md" />
       <CardWrapper>
         <HomeCard
-          title="Basis Cash"
+          title="GoCash现金"
           symbol="GOC"
           color="#EEA7ED"
-          supplyLabel="Circulating Supply"
+          supplyLabel="循环供应"
           address={cashAddr}
           stat={cash}
         />
         <Spacer size="lg" />
         <HomeCard
-          title="Basis Share"
+          title="GoCash股份"
           symbol="GOS"
           color="#E83725"
           address={shareAddr}
@@ -62,7 +62,7 @@ const Home: React.FC = () => {
         />
         <Spacer size="lg" />
         <HomeCard
-          title="Basis Bond"
+          title="GoCash债券"
           symbol="GOB"
           color="#ECF25C"
           address={bondAddr}
@@ -73,15 +73,15 @@ const Home: React.FC = () => {
   );
 };
 
-const StyledOverview = styled.div`
-  align-items: center;
-  display: flex;
-  @media (max-width: 768px) {
-    width: 100%;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-`;
+// const StyledOverview = styled.div`
+//   align-items: center;
+//   display: flex;
+//   @media (max-width: 768px) {
+//     width: 100%;
+//     flex-flow: column nowrap;
+//     align-items: center;
+//   }
+// `;
 
 const CardWrapper = styled.div`
   display: flex;
@@ -95,20 +95,20 @@ const CardWrapper = styled.div`
   }
 `;
 
-const StyledNoticeContainer = styled.div`
-  max-width: 768px;
-  width: 90vw;
-`;
+// const StyledNoticeContainer = styled.div`
+//   max-width: 768px;
+//   width: 90vw;
+// `;
 
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`;
+// const StyledSpacer = styled.div`
+//   height: ${(props) => props.theme.spacing[4]}px;
+//   width: ${(props) => props.theme.spacing[4]}px;
+// `;
 
-const StyledLink = styled.a`
-  font-weight: 700;
-  text-decoration: none;
-  color: ${(props) => props.theme.color.primary.main};
-`;
+// const StyledLink = styled.a`
+//   font-weight: 700;
+//   text-decoration: none;
+//   color: ${(props) => props.theme.color.primary.main};
+// `;
 
 export default Home;

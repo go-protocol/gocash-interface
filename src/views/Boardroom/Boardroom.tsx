@@ -84,12 +84,12 @@ const Boardroom: React.FC = () => {
         <Page>
           <PageHeader
             icon={'🤝'}
-            title="Join the Boardroom"
-            subtitle="Deposit Basis Shares and earn inflationary rewards"
+            title="加入董事会"
+            subtitle="存入GoCash股份赚取通胀奖励"
           />
           <LaunchCountdown
             deadline={config.boardroomLaunchesAt}
-            description="How does the boardroom work?"
+            description="我们是怎样工作的?"
             descriptionLink="https://docs.basis.cash/mechanisms/stabilization-mechanism#expansionary-policy"
           />
         </Page>
@@ -104,25 +104,25 @@ const Boardroom: React.FC = () => {
           <>
             <PageHeader
               icon={'🤝'}
-              title="Join the Boardroom"
-              subtitle="Deposit Basis Shares and earn inflationary rewards"
+              title="加入董事会"
+              subtitle="存入GoCash股份赚取通胀奖励"
             />
             {migrateNotice}
             <StyledHeader>
               <ProgressCountdown
                 base={prevEpoch}
                 deadline={nextEpoch}
-                description="Next Epoch"
+                description="下一通胀周期"
               />
               <Stat
                 icon="💵"
                 title={cashStat ? `$${cashStat.priceInDAI}` : '-'}
-                description="GOC Price (TWAP)"
+                description="GOC 价格 (TWAP)"
               />
               <Stat
                 icon="🚀"
                 title={scalingFactor ? `x${scalingFactor}` : '-'}
-                description="Scaling Factor"
+                description="比例因子"
               />
               <Stat
                 icon="💰"
@@ -131,7 +131,7 @@ const Boardroom: React.FC = () => {
                     ? `~$${Humanize.compactInteger(getBalance(treasuryAmount), 2)}`
                     : '-'
                 }
-                description="Treasury Amount"
+                description="国库金额"
               />
             </StyledHeader>
             <StyledBoardroom>
@@ -149,7 +149,7 @@ const Boardroom: React.FC = () => {
                 <Button
                   disabled={stakedBalance.eq(0)}
                   onClick={onRedeem}
-                  text="Settle & Withdraw"
+                  text="取出本金和收益"
                 />
               </div>
                 <Spacer size="lg" /></>) }
@@ -167,7 +167,7 @@ const Boardroom: React.FC = () => {
                 <Button
                   disabled={stakedLpBalance.eq(0)}
                   onClick={onLpRedeem}
-                  text="Settle & Withdraw"
+                  text="取出本金和收益"
                 />
               </div>
                 <Spacer size="lg" /></>) }
@@ -185,7 +185,7 @@ const UnlockWallet = () => {
   const { connect } = useWallet();
   return (
     <Center>
-      <Button onClick={() => connect('injected')} text="Unlock Wallet" />
+      <Button onClick={() => connect('injected')} text="解锁钱包" />
     </Center>
   );
 };

@@ -22,13 +22,13 @@ const AccountButton: React.FC<AccountButtonProps> = (props) => {
         <Button
           onClick={() => connect('injected')}
           size="sm"
-          text="Unlock Wallet"
+          text="解锁钱包"
         />
       ) : (
         <Button
           onClick={onPresentAccountModal}
           size="sm"
-          text="My Wallet"
+          text="我的钱包"
         />
       )}
     </StyledAccountButton>

@@ -1,10 +1,16 @@
-import React, { useCallback, useContext } from 'react';
-import { AlertCircle, CheckCircle } from 'react-feather';
-import styled, { ThemeContext } from 'styled-components';
+import React, { useCallback
+  // , useContext
+ } from 'react';
+import { AlertCircle
+  // , CheckCircle 
+} from 'react-feather';
+import styled
+// , { ThemeContext } 
+from 'styled-components';
 import { AutoColumn } from '../Column';
 import { AutoRow } from '../Row';
-import { useWallet } from 'use-wallet';
-import config from '../../config';
+// import { useWallet } from 'use-wallet';
+// import config from '../../config';
 
 const RowNoFlex = styled(AutoRow)`
   flex-wrap: nowrap;
@@ -22,7 +28,7 @@ export default function ErrorPopup({ message, stack }: { message: string; stack:
       </div>
       <AutoColumn gap="8px">
         <StyledPopupDesc>{message}</StyledPopupDesc>
-        <StyledLink onClick={copyErrorDetails} href="#">Copy error details</StyledLink>
+        <StyledLink onClick={copyErrorDetails} href="#">拷贝错误信息</StyledLink>
       </AutoColumn>
     </RowNoFlex>
   );

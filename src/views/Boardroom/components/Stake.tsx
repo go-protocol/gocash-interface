@@ -1,4 +1,6 @@
-import React, { useMemo } from 'react';
+import React
+// , { useMemo } 
+from 'react';
 import styled from 'styled-components';
 
 import Button from '../../../components/Button';
@@ -24,8 +26,8 @@ import TokenSymbol from '../../../components/TokenSymbol';
 import useStakeToBoardroom from '../../../hooks/useStakeToBoardroom';
 import useWithdrawFromBoardroom from '../../../hooks/useWithdrawFromBoardroom';
 import useBoardroomVersion from '../../../hooks/useBoardroomVersion';
-import useRedeemOnBoardroom from '../../../hooks/useRedeemOnBoardroom';
-import moment from 'moment';
+// import useRedeemOnBoardroom from '../../../hooks/useRedeemOnBoardroom';
+// import moment from 'moment';
 
 const Stake: React.FC = () => {
   const basisCash = useBasisCash();
@@ -41,10 +43,10 @@ const Stake: React.FC = () => {
 
   const { onStake } = useStakeToBoardroom();
   const { onWithdraw, canWithdraw, canWithdrawTime  } = useWithdrawFromBoardroom();
-  const { onRedeem } = useRedeemOnBoardroom('Redeem BAS for Boardroom Migration');
-  const _canWithdrawTime = new Date(canWithdrawTime.mul(1000).toNumber());
+  // const { onRedeem } = useRedeemOnBoardroom('Redeem BAS for Boardroom Migration');
+  // const _canWithdrawTime = new Date(canWithdrawTime.mul(1000).toNumber());
 
-  const withdrawTime = useMemo(() => moment(_canWithdrawTime).utc().startOf('hour').toDate(), [_canWithdrawTime]);
+  // const withdrawTime = useMemo(() => moment(_canWithdrawTime).utc().startOf('hour').toDate(), [_canWithdrawTime]);
 
   const [onPresentDeposit, onDismissDeposit] = useModal(
     <DepositModal
@@ -53,7 +55,7 @@ const Stake: React.FC = () => {
         onStake(value);
         onDismissDeposit();
       }}
-      tokenName={'Basis Share'}
+      tokenName={'GoCash 股份'}
     />,
   );
 
@@ -64,7 +66,7 @@ const Stake: React.FC = () => {
         onWithdraw(value);
         onDismissWithdraw();
       }}
-      tokenName={'Basis Share'}
+      tokenName={'GoCash股份GOS'}
     />,
   );
 
@@ -77,14 +79,14 @@ const Stake: React.FC = () => {
               <TokenSymbol symbol="GOS" />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance)} />
-            <Label text="Basis Share Staked" />
+            <Label text="GoCash股份GOS质押" />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
               <Button
                 disabled={approveStatus !== ApprovalState.NOT_APPROVED}
                 onClick={approve}
-                text="Approve Basis Share"
+                text="批准GoCash股份GOS"
               />
             ) : (
                 <>
@@ -94,7 +96,7 @@ const Stake: React.FC = () => {
                     </IconButton>
                   ) : (
                     <IconButton disabled={true}>
-                    <Label text="can not withdraw" />
+                    <Label text="暂不能取款" />
                     </IconButton>
                     )}
                   <StyledActionSpacer />

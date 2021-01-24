@@ -12,7 +12,7 @@ import useHarvestFromBoardroom from '../../../hooks/useHarvestFromBoardroom';
 import useEarningsOnBoardroom from '../../../hooks/useEarningsOnBoardroom';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 
-const Harvest: React.FC = ({}) => {
+const Harvest: React.FC = () => {
   const { onReward } = useHarvestFromBoardroom();
   const earnings = useEarningsOnBoardroom();
 
@@ -25,10 +25,10 @@ const Harvest: React.FC = ({}) => {
               <TokenSymbol symbol="GOC" />
             </CardIcon>
             <Value value={getDisplayBalance(earnings)} />
-            <Label text="Basis Cash Earned" />
+            <Label text="赚到GoCash现金" />
           </StyledCardHeader>
           <StyledCardActions>
-            <Button onClick={onReward} text="Claim Reward" disabled={earnings.eq(0)} />
+            <Button onClick={onReward} text="收获奖励" disabled={earnings.eq(0)} />
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
@@ -48,10 +48,10 @@ const StyledCardActions = styled.div`
   width: 100%;
 `;
 
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`;
+// const StyledSpacer = styled.div`
+//   height: ${(props) => props.theme.spacing[4]}px;
+//   width: ${(props) => props.theme.spacing[4]}px;
+// `;
 
 const StyledCardContentInner = styled.div`
   align-items: center;

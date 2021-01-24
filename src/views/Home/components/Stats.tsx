@@ -35,7 +35,7 @@ const Stats: React.FC<StatsProps> = ({
         <CardContent>
           <StyledStat>
             <StyledValue>{curPrice ? `$${getDisplayBalance(BigNumber.from(curPrice))}` : '--'}</StyledValue>
-            <Label text="Current Price" />
+            <Label text="当前价格" />
           </StyledStat>
         </CardContent>
       </Card>
@@ -46,7 +46,7 @@ const Stats: React.FC<StatsProps> = ({
         <CardContent>
           <StyledStat>
             <StyledValue>{targetPrice ? `$${targetPrice}` : '--'}</StyledValue>
-            <Label text="Target Price" />
+            <Label text="目标价格" />
           </StyledStat>
         </CardContent>
       </Card>
@@ -59,7 +59,7 @@ const Stats: React.FC<StatsProps> = ({
             <StyledValue>
               ${formattedTotalSupply}
             </StyledValue>
-            <Label text="Total Supply" />
+            <Label text="总供应量" />
           </StyledStat>
         </CardContent>
       </Card>

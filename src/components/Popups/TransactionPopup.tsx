@@ -36,7 +36,7 @@ export default function TransactionPopup({
           {summary ?? 'Hash: ' + hash.slice(0, 8) + '...' + hash.slice(58, 65)}
         </StyledPopupDesc>
         {chainId && (
-          <StyledLink href={`${config.etherscanUrl}/tx/${hash}`}>View on Etherscan</StyledLink>
+          <StyledLink href={`${config.etherscanUrl}/tx/${hash}`}>在浏览器上查看</StyledLink>
         )}
       </AutoColumn>
     </RowNoFlex>

@@ -77,10 +77,10 @@ const BankCard: React.FC<BankCardProps> = ({ bank }) => {
   return (
     <StyledCardWrapper>
       {bank.depositTokenName.includes('LP') &&
-        (bank.depositTokenName.includes('BAS_DAI') ? (
+        (bank.depositTokenName.includes('GOC_HUSD') ? (
           <StyledCardSuperAccent />
         ) : (
-          <StyledCardAccent />
+          <StyledCardNomal />
         ))}
       <Card>
         <CardContent>
@@ -90,16 +90,28 @@ const BankCard: React.FC<BankCardProps> = ({ bank }) => {
             </CardIcon>
             <StyledTitle>{bank.name}</StyledTitle>
             <StyledDetails>
-              <StyledDetail>Deposit {bank.depositTokenName.toUpperCase()}</StyledDetail>
-              <StyledDetail>Earn {`Basis ${bank.earnTokenName}`}</StyledDetail>
+              <StyledDetail>存入 {bank.depositTokenName.toUpperCase()}</StyledDetail>
+              <StyledDetail>赚取 {`${bank.earnTokenName}`}</StyledDetail>
             </StyledDetails>
-            <Button text="Select" to={`/bank/${bank.contract}`} />
+            <Button text="加入" to={`/bank/${bank.contract}`} />
           </StyledContent>
         </CardContent>
       </Card>
     </StyledCardWrapper>
   );
 };
+
+const StyledCardNomal = styled.div`
+
+  border-radius: 12px;
+  filter: blur(4px);
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  z-index: -1;
+`;
 
 const StyledCardAccent = styled.div`
   background: linear-gradient(
@@ -161,12 +173,12 @@ const StyledCards = styled.div`
   }
 `;
 
-const StyledLoadingWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-`;
+// const StyledLoadingWrapper = styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex: 1;
+//   justify-content: center;
+// `;
 
 const StyledRow = styled.div`
   display: flex;

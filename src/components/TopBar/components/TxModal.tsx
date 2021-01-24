@@ -26,7 +26,7 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
     .filter((tx) => tx.receipt)
     .slice(0, MAX_TRANSACTION_HISTORY);
 
-  const isEmpty = (confirmed?.length + pending?.length) == 0;
+  const isEmpty = (confirmed?.length + pending?.length) === 0;
   return (
     <StyledModal>
       <StyledTitleArea>
@@ -39,7 +39,7 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
       </StyledTitleArea>
       {pending?.length > 0 && (
         <>
-          <Label text="Pending transactions" />
+          <Label text="处理中的交易" />
           <StyledTransactionList>
             {pending.map(tx => <Transaction key={tx.hash} tx={tx} />)}
           </StyledTransactionList>
@@ -48,17 +48,17 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
       )}
       {confirmed?.length > 0 && (
         <>
-          <Label text="Recent transactions" />
+          <Label text="当前的交易" />
           <StyledTransactionList>
             {confirmed.map(tx => <Transaction key={tx.hash} tx={tx} />)}
           </StyledTransactionList>
         </>
       )}
       {isEmpty && (
-        <Label text="No transactions." color="#777" />
+        <Label text="没有交易" color="#777" />
       )}
       <ModalActions>
-        <Button text="Close" onClick={onDismiss} />
+        <Button text="关闭" onClick={onDismiss} />
       </ModalActions>
     </StyledModal>
   )

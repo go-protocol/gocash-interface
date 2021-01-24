@@ -7,6 +7,8 @@ export interface BankInfo {
   contract: ContractName;
   depositTokenName: ContractName;
   earnTokenName: ContractName;
+  pairName: string;
+  pairUrl: string;
   sort: number;
   finished: boolean;
 }
