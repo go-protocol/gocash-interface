@@ -152,7 +152,7 @@ const Boardroom: React.FC = () => {
                   text="取出本金和收益"
                 />
               </div>
-                <Spacer size="lg" /></>) }
+                <Spacer size="lg" /></>)}
               <StyledCardsWrapper>
                 <StyledCardWrapper>
                   <LpHarvest />
@@ -170,8 +170,11 @@ const Boardroom: React.FC = () => {
                   text="取出本金和收益"
                 />
               </div>
-                <Spacer size="lg" /></>) }
+                <Spacer size="lg" /></>)}
             </StyledBoardroom>
+            <StyledLink href="https://www.goswap.app/#/add/0x36b29B53c483bd00978D40126E614bb7e45d8354/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6" target="_blank">
+              {`🦄  在GoSwap为GOS-HUSD LP交易对提供流动性  🦄`}
+            </StyledLink>
           </>
         ) : (
             <UnlockWallet />
@@ -189,6 +192,12 @@ const UnlockWallet = () => {
     </Center>
   );
 };
+
+const StyledLink = styled.a`
+  font-weight: 700;
+  text-decoration: none;
+  color: ${(props) => props.theme.color.primary.main};
+`;
 
 const StyledBoardroom = styled.div`
   align-items: center;

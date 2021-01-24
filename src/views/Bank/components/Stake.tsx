@@ -81,7 +81,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   approveStatus === ApprovalState.UNKNOWN
                 }
                 onClick={approve}
-                text={`Approve ${bank.depositTokenName}`}
+                text={`批准 ${bank.depositTokenName}`}
               />
             ) : (
               <>
