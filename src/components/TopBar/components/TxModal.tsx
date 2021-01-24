@@ -30,7 +30,7 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
   return (
     <StyledModal>
       <StyledTitleArea>
-        <StyledModalTitle>Transactions</StyledModalTitle>
+        <StyledModalTitle>交易记录</StyledModalTitle>
         {confirmed?.length > 0 && (
           <StyledClearIconWrapper>
             <Trash onClick={clearAllTransactions} size="16" />
