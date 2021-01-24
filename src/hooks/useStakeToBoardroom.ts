@@ -13,7 +13,7 @@ const useStakeToBoardroom = () => {
         `质押 ${amount} GOS 到董事会`,
       );
     },
-    [basisCash],
+    [basisCash,handleTransactionReceipt],
   );
   return { onStake: handleStake };
 };

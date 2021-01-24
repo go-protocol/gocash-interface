@@ -32,18 +32,18 @@ const StyledLink = styled(NavLink)`
     color: ${props => props.theme.color.primary.main};
   }
 `
-const StyledLink2 = styled.a`
-  color: ${props => props.theme.color.grey[400]};
-  font-weight: 700;
-  padding-left: ${props => props.theme.spacing[3]}px;
-  padding-right: ${props => props.theme.spacing[3]}px;
-  text-decoration: none;
-  &:hover {
-    color: ${props => props.theme.color.grey[500]};
-  }
-  &.active {
-    color: ${props => props.theme.color.primary.main};
-  }
-`
+// const StyledLink2 = styled.a`
+//   color: ${props => props.theme.color.grey[400]};
+//   font-weight: 700;
+//   padding-left: ${props => props.theme.spacing[3]}px;
+//   padding-right: ${props => props.theme.spacing[3]}px;
+//   text-decoration: none;
+//   &:hover {
+//     color: ${props => props.theme.color.grey[500]};
+//   }
+//   &.active {
+//     color: ${props => props.theme.color.primary.main};
+//   }
+// `;// eslint-disable-line no-unused-vars
 
 export default Nav

@@ -9,7 +9,7 @@ const useStakedBalanceOnBoardroom = () => {
 
   const fetchBalance = useCallback(async () => {
     setBalance(await basisCash.getStakedSharesOnBoardroom());
-  }, [basisCash?.isUnlocked]);
+  }, [basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -18,7 +18,7 @@ const useStakedBalanceOnBoardroom = () => {
       const refreshBalance = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, setBalance, basisCash]);
+  }, [setBalance, basisCash,fetchBalance]);
 
   return balance;
 };

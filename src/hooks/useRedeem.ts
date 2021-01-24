@@ -9,7 +9,7 @@ const useRedeem = (bank: Bank) => {
 
   const handleRedeem = useCallback(() => {
     handleTransactionReceipt(basisCash.exit(bank.contract), `赎回 ${bank.contract}`);
-  }, [bank, basisCash]);
+  }, [bank, basisCash,handleTransactionReceipt]);
 
   return { onRedeem: handleRedeem };
 };

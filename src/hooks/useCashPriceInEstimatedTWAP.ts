@@ -15,7 +15,7 @@ const useCashPriceInEstimatedTWAP = () => {
     fetchCashPrice().catch((err) => '');
     const refreshInterval = setInterval(fetchCashPrice, config.refreshInterval);
     return () => clearInterval(refreshInterval);
-  }, [setStat, basisCash]);
+  }, [setStat, basisCash,fetchCashPrice]);
 
   return stat;
 };

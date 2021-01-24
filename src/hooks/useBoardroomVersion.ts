@@ -9,13 +9,13 @@ const useBoardroomVersion = () => {
 
   const updateState = useCallback(async () => {
     setBoardroomVersion(await basisCash.fetchBoardroomVersionOfUser());
-  }, [basisCash?.isUnlocked, stakedBalance]);
+  }, [basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
       updateState().catch((err) => console.error(err.stack));
     }
-  }, [basisCash?.isUnlocked, stakedBalance]);
+  }, [ stakedBalance,basisCash,updateState]);
 
   return boardroomVersion;
 };

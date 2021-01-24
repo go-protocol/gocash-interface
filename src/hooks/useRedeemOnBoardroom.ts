@@ -9,8 +9,8 @@ const useRedeemOnBoardroom = (description?: string) => {
   const handleRedeem = useCallback(() => {
     const alertDesc = description || '从董事会赎回GOS';
     handleTransactionReceipt(basisCash.exitFromBoardroom(), alertDesc);
-  }, [basisCash]);
-  return { onRedeem: handleRedeem };
+  }, [basisCash,description,handleTransactionReceipt]);
+  return { onRedeem: handleRedeem,handleTransactionReceipt };
 };
 
 export default useRedeemOnBoardroom;

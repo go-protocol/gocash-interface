@@ -12,7 +12,7 @@ const useStakedBalance = (poolName: ContractName) => {
   const fetchBalance = useCallback(async () => {
     const balance = await basisCash.stakedBalanceOnBank(poolName, basisCash.myAccount);
     setBalance(balance);
-  }, [basisCash?.isUnlocked, poolName]);
+  }, [ poolName,basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -21,7 +21,7 @@ const useStakedBalance = (poolName: ContractName) => {
       const refreshBalance = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, poolName, setBalance, basisCash]);
+  }, [poolName, setBalance, basisCash,fetchBalance]);
 
   return balance;
 };

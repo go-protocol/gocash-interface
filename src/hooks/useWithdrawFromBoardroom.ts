@@ -15,7 +15,7 @@ const useWithdrawFromBoardroom = () => {
   const getCanWithdraw = useCallback(async () => {
     setCanWithdraw(await basisCash.canWithdrawFromBoardroom());
     setCanWithdrawTime(await basisCash.canWithdrawTimeFromBoardroom());
-  }, [basisCash?.isUnlocked]);
+  }, [basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -24,7 +24,7 @@ const useWithdrawFromBoardroom = () => {
       const refreshBalance = setInterval(getCanWithdraw, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, setCanWithdraw,setCanWithdrawTime]);
+  }, [ setCanWithdraw,setCanWithdrawTime,basisCash,getCanWithdraw]);
   const handleWithdraw = useCallback(
     (amount: string) => {
       handleTransactionReceipt(
@@ -32,7 +32,7 @@ const useWithdrawFromBoardroom = () => {
         `从董事会取出 ${amount} GOS`,
       );
     },
-    [basisCash],
+    [basisCash,handleTransactionReceipt],
   );
   return { onWithdraw: handleWithdraw, canWithdraw,canWithdrawTime };
 };

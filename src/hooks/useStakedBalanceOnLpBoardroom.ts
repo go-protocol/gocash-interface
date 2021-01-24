@@ -9,7 +9,7 @@ const useStakedBalanceOnLpBoardroom = () => {
 
   const fetchBalance = useCallback(async () => {
     setBalance(await basisCash.getStakedSharesOnLpBoardroom());
-  }, [basisCash?.isUnlocked]);
+  }, [basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -18,7 +18,7 @@ const useStakedBalanceOnLpBoardroom = () => {
       const refreshBalance = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, setBalance, basisCash]);
+  }, [ setBalance, basisCash,fetchBalance]);
 
   return balance;
 };

@@ -16,7 +16,7 @@ const useStake = (bank: Bank) => {
         `质押 ${amount} ${bank.depositTokenName} 到 ${bank.contract}`,
       );
     },
-    [bank, basisCash],
+    [bank, basisCash,handleTransactionReceipt],
   );
   return { onStake: handleStake };
 };

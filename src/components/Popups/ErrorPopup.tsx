@@ -19,7 +19,7 @@ const RowNoFlex = styled(AutoRow)`
 export default function ErrorPopup({ message, stack }: { message: string; stack: string }) {
   const copyErrorDetails = useCallback(async () => {
     await navigator.clipboard.writeText(`${message}\n${stack}`);
-  }, []);
+  }, [message,stack]);
 
   return (
     <RowNoFlex>

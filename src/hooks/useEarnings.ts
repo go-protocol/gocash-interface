@@ -11,7 +11,7 @@ const useEarnings = (poolName: ContractName) => {
   const fetchBalance = useCallback(async () => {
     const balance = await basisCash.earnedFromBank(poolName, basisCash.myAccount);
     setBalance(balance);
-  }, [basisCash?.isUnlocked, poolName]);
+  }, [ poolName,basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -20,7 +20,7 @@ const useEarnings = (poolName: ContractName) => {
       const refreshBalance = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, poolName, basisCash]);
+  }, [poolName, basisCash,fetchBalance]);
 
   return balance;
 };

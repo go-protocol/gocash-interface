@@ -42,7 +42,7 @@ const Stake: React.FC = () => {
   // const isOldBoardroomMember = boardroomVersion !== 'latest';
 
   const { onStake } = useStakeToBoardroom();
-  const { onWithdraw, canWithdraw, canWithdrawTime  } = useWithdrawFromBoardroom();
+  const { onWithdraw, canWithdraw  } = useWithdrawFromBoardroom();// eslint-disable-line no-unused-vars
   // const { onRedeem } = useRedeemOnBoardroom('Redeem BAS for Boardroom Migration');
   // const _canWithdrawTime = new Date(canWithdrawTime.mul(1000).toNumber());
 

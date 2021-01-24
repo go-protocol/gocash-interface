@@ -9,7 +9,7 @@ const useRedeemOnLpBoardroom = (description?: string) => {
   const handleRedeem = useCallback(() => {
     const alertDesc = description || '从董事会赎回GOS';
     handleTransactionReceipt(basisCash.exitFromLpBoardroom(), alertDesc);
-  }, [basisCash]);
+  }, [basisCash,description,handleTransactionReceipt]);
   return { onLpRedeem: handleRedeem };
 };
 

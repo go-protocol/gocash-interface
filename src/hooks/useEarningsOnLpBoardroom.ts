@@ -9,7 +9,7 @@ const useEarningsOnLpBoardroom = () => {
 
   const fetchBalance = useCallback(async () => {
     setBalance(await basisCash.getEarningsOnLpBoardroom());
-  }, [basisCash?.isUnlocked]);
+  }, [basisCash]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -18,7 +18,7 @@ const useEarningsOnLpBoardroom = () => {
       const refreshBalance = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshBalance);
     }
-  }, [basisCash?.isUnlocked, setBalance]);
+  }, [ setBalance,basisCash,fetchBalance]);
 
   return balance;
 };

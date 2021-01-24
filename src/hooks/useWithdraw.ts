@@ -16,7 +16,7 @@ const useWithdraw = (bank: Bank) => {
         `从 ${bank.contract} 取出 ${amount} ${bank.depositTokenName} `,
       );
     },
-    [bank, basisCash],
+    [bank, basisCash,handleTransactionReceipt],
   );
   return { onWithdraw: handleWithdraw };
 };

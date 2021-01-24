@@ -10,7 +10,7 @@ const useTokenBalance = (token: ERC20) => {
 
   const fetchBalance = useCallback(async () => {
     setBalance(await token.balanceOf(basisCash.myAccount));
-  }, [basisCash?.isUnlocked, token]);
+  }, [token,basisCash.myAccount]);
 
   useEffect(() => {
     if (basisCash?.isUnlocked) {
@@ -20,7 +20,7 @@ const useTokenBalance = (token: ERC20) => {
       let refreshInterval = setInterval(fetchBalance, config.refreshInterval);
       return () => clearInterval(refreshInterval);
     }
-  }, [basisCash?.isUnlocked, token]);
+  }, [basisCash, token,fetchBalance]);
 
   return balance;
 };

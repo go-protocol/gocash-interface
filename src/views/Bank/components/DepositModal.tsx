@@ -21,7 +21,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, decimals, onConfirm, o
 
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max, decimals)
-  }, [max])
+  }, [max,decimals])
 
   const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     setVal(e.currentTarget.value)

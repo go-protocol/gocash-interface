@@ -24,7 +24,7 @@ function useHandleTransactionReceipt(): (
           addPopup({ error: { message, stack: err.message || err.stack } });
         });
     },
-    [addPopup],
+    [addPopup,addTransaction],
   );
 }
 
