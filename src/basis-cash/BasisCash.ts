@@ -112,6 +112,25 @@ export class BasisCash {
    * @returns Estimated Basis Cash (GOC) price data,
    * calculated by 1-day Time-Weight Averaged Price (TWAP).
    */
+  async getCashOraclePriceInLastTWAP(): Promise<TokenStat> {
+    const { SeigniorageOracle } = this.contracts;
+
+    const expectedPrice = await SeigniorageOracle.consult(
+      this.GOC.address,
+      ethers.utils.parseEther('1'),
+    );
+    const supply = await this.GOC.displayedTotalSupply();
+
+    return {
+      priceInDAI: getDisplayBalance(expectedPrice,8),
+      totalSupply: supply,
+    };
+  }
+
+  /**
+   * @returns Estimated Basis Cash (GOC) price data,
+   * calculated by 1-day Time-Weight Averaged Price (TWAP).
+   */
   async getCashStatInEstimatedTWAP(): Promise<TokenStat> {
     const { SeigniorageOracle } = this.contracts;
 

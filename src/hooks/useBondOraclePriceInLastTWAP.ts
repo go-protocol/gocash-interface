@@ -12,7 +12,7 @@ const useBondOraclePriceInLastTWAP = () => {
   }, [basisCash]);
 
   useEffect(() => {
-    fetchCashPrice().catch((err) => console.error(`Failed to fetch BAB price: ${err.stack}`));
+    fetchCashPrice().catch((err) => '');
     const refreshInterval = setInterval(fetchCashPrice, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setPrice, basisCash,fetchCashPrice]);

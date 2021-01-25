@@ -8,7 +8,7 @@ const useCashPriceInEstimatedTWAP = () => {
   const basisCash = useBasisCash();
 
   const fetchCashPrice = useCallback(async () => {
-    setStat(await basisCash.getCashStatInEstimatedTWAP());
+    setStat(await basisCash.getCashOraclePriceInLastTWAP());
   }, [basisCash]);
 
   useEffect(() => {
