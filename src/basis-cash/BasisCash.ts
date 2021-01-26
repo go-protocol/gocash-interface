@@ -409,4 +409,20 @@ export class BasisCash {
     const prevAllocation = new Date(nextAllocation.getTime() - period.toNumber() * 1000);
     return { prevAllocation, nextAllocation };
   }
+  async canAllocateSeigniorage(): Promise<Boolean> {
+    const { Treasury } = this.contracts;
+    const CurrentEpoch: BigNumber = await Treasury.getCurrentEpoch();
+    const NextEpoch: BigNumber = await Treasury.getNextEpoch();
+    const StartTime: BigNumber = await Treasury.getStartTime();
+
+    if( StartTime.mul(1000).toNumber() < Date.now() && CurrentEpoch >= NextEpoch){
+      return true;
+    }else{
+      return false
+    }    
+  }
+  async allocateSeigniorage(): Promise<TransactionResponse> {
+    const { Treasury } = this.contracts;
+    return await Treasury.allocateSeigniorage();
+  }
 }

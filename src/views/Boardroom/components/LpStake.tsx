@@ -1,6 +1,4 @@
-import React
-// , { useMemo } 
-from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import Button from '../../../components/Button';
@@ -26,7 +24,7 @@ import TokenSymbol from '../../../components/TokenSymbol';
 import useStakeToLpBoardroom from '../../../hooks/useStakeToLpBoardroom';
 import useWithdrawFromLpBoardroom from '../../../hooks/useWithdrawFromLpBoardroom';
 // import useRedeemOnLpBoardroom from '../../../hooks/useRedeemOnLpBoardroom';
-// import moment from 'moment';
+import moment from 'moment';
 
 const Stake: React.FC = () => {
   const basisCash = useBasisCash();
@@ -40,11 +38,13 @@ const Stake: React.FC = () => {
   // const isOldBoardroomMember = boardroomVersion !== 'latest';
 
   const { onStake } = useStakeToLpBoardroom();
-  const { onWithdraw, canWithdrawLp } = useWithdrawFromLpBoardroom();// eslint-disable-line no-unused-vars
+  const { onWithdraw, canWithdrawLp,canWithdrawTime} = useWithdrawFromLpBoardroom();// eslint-disable-line no-unused-vars
   // const { onLpRedeem } = useRedeemOnLpBoardroom('Redeem BAS for Boardroom Migration');
-  // const _canWithdrawTime = new Date(canWithdrawTime.mul(1000).toNumber());
+  const withdrawUnix = canWithdrawTime.toNumber() - moment().unix();
+  const withdrawHour = Math.floor(withdrawUnix / 3600)
+  const withdrawMinus = Math.floor((withdrawUnix - withdrawHour * 3600) / 60);
 
-  // const withdrawTime = useMemo(() => moment(_canWithdrawTime).utc().startOf('hour').toDate(), [_canWithdrawTime]);
+  const withdrawTime = useMemo(() => withdrawHour> 0 && withdrawHour + "小时" + withdrawMinus + "分钟后可以取款", [withdrawUnix]);
 
   const [onPresentDeposit, onDismissDeposit] = useModal(
     <DepositModal
@@ -78,6 +78,9 @@ const Stake: React.FC = () => {
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance)} />
             <Label text="GOS-HUSD LP质押" />
+            {!canWithdrawLp && (
+                    <Label text={withdrawTime} />
+            )}
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -88,16 +91,13 @@ const Stake: React.FC = () => {
               />
             ) : (
                 <>
-                  {canWithdrawLp ? (
+                {canWithdrawLp && (
+                    <div>
                     <IconButton onClick={onPresentWithdraw}>
                       <RemoveIcon />
                     </IconButton>
-                  ) : (
-                    <IconButton disabled={true}>
-                    <Label text="暂不能取款" />
-                    </IconButton>
-                    )}
-                  <StyledActionSpacer />
+                  <StyledActionSpacer /></div>
+                  ) }
                   <IconButton onClick={onPresentDeposit}>
                     <AddIcon />
                   </IconButton>

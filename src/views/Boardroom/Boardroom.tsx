@@ -22,18 +22,20 @@ import config from '../../config';
 import LaunchCountdown from '../../components/LaunchCountdown';
 import Stat from './components/Stat';
 import ProgressCountdown from './components/ProgressCountdown';
+import AllocateSeigniorage from './components/AllocateSeigniorage';
 import useCashPriceInEstimatedTWAP from '../../hooks/useCashPriceInEstimatedTWAP';
 import useTreasuryAmount from '../../hooks/useTreasuryAmount';
 import Humanize from 'humanize-plus';
 import { getBalance } from '../../utils/formatBalance';
 import useTreasuryAllocationTimes from '../../hooks/useTreasuryAllocationTimes';
+import useCanAllocateSeigniorage from '../../hooks/useCanAllocateSeigniorage';
 import Notice from '../../components/Notice';
 import useBoardroomVersion from '../../hooks/useBoardroomVersion';
 import moment from 'moment';
 
 const Boardroom: React.FC = () => {
   // useEffect(() => window.scrollTo(0, 0));
-  const { account } = useWallet();
+  const { account ,connect} = useWallet();
   const { onRedeem } = useRedeemOnBoardroom();
   const { onLpRedeem } = useRedeemOnLpBoardroom();
   const stakedBalance = useStakedBalanceOnBoardroom();
@@ -48,6 +50,7 @@ const Boardroom: React.FC = () => {
     [cashStat],
   );
   const { prevAllocation, nextAllocation } = useTreasuryAllocationTimes();
+  const canAllocateSeigniorage = useCanAllocateSeigniorage();
 
   const prevEpoch = useMemo(
     () =>
@@ -56,7 +59,7 @@ const Boardroom: React.FC = () => {
         : prevAllocation,
     [prevAllocation, nextAllocation],
   );
-  const nextEpoch = useMemo(() => moment(prevEpoch).add(8, 'hour').toDate(), [prevEpoch]);
+  const nextEpoch = useMemo(() => moment(prevEpoch).add(12, 'hour').toDate(), [prevEpoch]);
 
   const boardroomVersion = useBoardroomVersion();
   // const usingOldBoardroom = boardroomVersion !== 'latest';
@@ -96,7 +99,6 @@ const Boardroom: React.FC = () => {
       </Switch>
     );
   }
-
   return (
     <Switch>
       <Page>
@@ -109,11 +111,15 @@ const Boardroom: React.FC = () => {
             />
             {migrateNotice}
             <StyledHeader>
+            {canAllocateSeigniorage ? (<AllocateSeigniorage
+              
+            />):(
               <ProgressCountdown
                 base={prevEpoch}
                 deadline={nextEpoch}
                 description="下一通胀周期"
               />
+            )}
               <Stat
                 icon="💵"
                 title={cashStat ? `$${cashStat.priceInDAI}` : '-'}
@@ -177,21 +183,22 @@ const Boardroom: React.FC = () => {
             </StyledLink>
           </>
         ) : (
-            <UnlockWallet />
-          )}
+          <div
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <Button onClick={() => connect('injected')} text="解锁钱包" />
+          </div>
+        )}
       </Page>
     </Switch>
   );
 };
 
-const UnlockWallet = () => {
-  const { connect } = useWallet();
-  return (
-    <Center>
-      <Button onClick={() => connect('injected')} text="解锁钱包" />
-    </Center>
-  );
-};
 
 const StyledLink = styled.a`
   font-weight: 700;
