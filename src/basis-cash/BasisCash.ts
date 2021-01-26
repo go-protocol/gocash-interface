@@ -201,8 +201,8 @@ export class BasisCash {
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     return await Treasury.buyBonds(
-      decimalToBalance(amount),
-      await this.getOraclePriceInLastTWAP(),
+      decimalToBalance(amount)
+      // await this.getOraclePriceInLastTWAP(),
     );
   }
 
