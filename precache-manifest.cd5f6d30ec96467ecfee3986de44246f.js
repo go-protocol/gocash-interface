@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d47a3221cc5b396fe5d711b1266daf67",
+    "revision": "ce48c4fe36917c7c80390ffe35fd86c6",
     "url": "/index.html"
   },
   {
-    "revision": "e2d9d570c3ebccd1aa5f",
+    "revision": "dadc2f8ff7ebd27bbb5b",
     "url": "/static/css/main.cf602f5d.chunk.css"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/9.9d0f5647.chunk.js"
   },
   {
-    "revision": "e2d9d570c3ebccd1aa5f",
-    "url": "/static/js/main.7ec4b473.chunk.js"
+    "revision": "dadc2f8ff7ebd27bbb5b",
+    "url": "/static/js/main.96a8e5b3.chunk.js"
   },
   {
     "revision": "e635c8a4ce7fb67c6b58",
@@ -88,20 +88,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/USDT.839a0f0d.png"
   },
   {
-    "revision": "80fb5592c2e3b926434d5356087e51b0",
-    "url": "/static/media/basis-bond-logo.80fb5592.svg"
+    "revision": "6820b1370fdd03311e36936a85c6b6bb",
+    "url": "/static/media/farmer.6820b137.png"
   },
   {
-    "revision": "89e2967875c805010eda6e2a11917411",
-    "url": "/static/media/basis-cash-logo.89e29678.svg"
+    "revision": "160112f78ee29aa5edfc542db02e21ed",
+    "url": "/static/media/goswap-GOB.160112f7.svg"
   },
   {
-    "revision": "466cf09b6dd8d18a5c0b2d083d2bfe78",
-    "url": "/static/media/basis-share-logo.466cf09b.svg"
+    "revision": "73568d603e1f6047fdd47609d75d39d7",
+    "url": "/static/media/goswap-GOC.73568d60.svg"
   },
   {
-    "revision": "0a327c746280fd93f2b4ba3efe83c878",
-    "url": "/static/media/farmer.0a327c74.png"
+    "revision": "48ba4fe80133ade79afeea9ac7d9d31a",
+    "url": "/static/media/goswap-GOS.48ba4fe8.svg"
   },
   {
     "revision": "f8fec857dc3b8e244e4c910c550b1df8",
