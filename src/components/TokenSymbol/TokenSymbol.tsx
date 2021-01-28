@@ -1,8 +1,8 @@
 import React from 'react';
 
-import bacLogo from '../../assets/img/basis-cash-logo.svg';
-import basLogo from '../../assets/img/basis-share-logo.svg';
-import babLogo from '../../assets/img/basis-bond-logo.svg';
+import gocLogo from '../../assets/img/goswap-GOC.svg';
+import gosLogo from '../../assets/img/goswap-GOS.svg';
+import gobLogo from '../../assets/img/goswap-GOB.svg';
 import yCRVLogo from '../../assets/img/ycrv.png';
 import DAILogo from '../../assets/img/DAI.png';
 import sUSDLogo from '../../assets/img/sUSD.png';
@@ -11,16 +11,16 @@ import USDTLogo from '../../assets/img/USDT.png';
 import GOTLogo from '../../assets/img/Goswap-logo-GOT.png';
 
 const logosBySymbol: {[title: string]: string} = {
-  'GOC': bacLogo,
-  'GOB': babLogo,
-  'GOS': basLogo,
+  'GOC': gocLogo,
+  'GOB': gobLogo,
+  'GOS': gosLogo,
   'yCRV': yCRVLogo,
   'DAI': DAILogo,
   'SUSD': sUSDLogo,
   'USDC': USDCLogo,
   'USDT': USDTLogo,
-  'GOC_HUSD-GLP': bacLogo,
-  'GOS_HUSD-GLP': basLogo,
+  'GOC_HUSD-GLP': gocLogo,
+  'GOS_HUSD-GLP': gosLogo,
   'HT_HUSD-GLP': GOTLogo,
   'GOT_HUSD-GLP': GOTLogo,
 };
