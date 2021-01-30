@@ -8,7 +8,9 @@ const useBondStats = () => {
   const basisCash = useBasisCash();
 
   const fetchBondPrice = useCallback(async () => {
-    setStat(await basisCash.getBondStat());
+    if(basisCash){
+      setStat(await basisCash.getBondStat());
+    }
   }, [basisCash]);
 
   useEffect(() => {
