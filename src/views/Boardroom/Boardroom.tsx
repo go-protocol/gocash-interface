@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, {useMemo } from 'react';
 import styled from 'styled-components';
 import { useWallet } from 'use-wallet';
 
@@ -259,11 +259,11 @@ const StyledCardWrapper = styled.div`
   }
 `;
 
-const Center = styled.div`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
+// const Center = styled.div`
+//   display: flex;
+//   flex: 1;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
 export default Boardroom;

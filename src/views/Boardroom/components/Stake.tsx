@@ -46,7 +46,7 @@ const Stake: React.FC = () => {
   const withdrawHour = Math.floor(withdrawUnix / 3600)
   const withdrawMinus = Math.floor((withdrawUnix - withdrawHour * 3600) / 60);
 
-  const withdrawTime = useMemo(() => withdrawHour> 0 && withdrawHour + "小时" + withdrawMinus + "分钟后可以取款", [withdrawUnix]);
+  const withdrawTime = useMemo(() => withdrawHour> 0 && withdrawHour + "小时" + withdrawMinus + "分钟后可以取款", [withdrawHour,withdrawMinus]);
 
   const [onPresentDeposit, onDismissDeposit] = useModal(
     <DepositModal
