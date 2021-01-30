@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Card from '../../../components/Card';
 
 interface StatProps {
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
 }
@@ -32,8 +32,9 @@ const StyledDesc = styled.span`
   color: ${(props) => props.theme.color.grey[400]};
 `;
 
-const StyledIcon = styled.span`
+const StyledIcon = styled.div`
   font-size: 28px;
+  width:40px;
   margin-right: 10px;
 `;
 

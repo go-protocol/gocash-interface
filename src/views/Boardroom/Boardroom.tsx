@@ -86,7 +86,7 @@ const Boardroom: React.FC = () => {
       <Switch>
         <Page>
           <PageHeader
-            icon={'🤝'}
+            icon={<img src={require("../../assets/img/boardroom.png")} width="50%" height="95%"/>}
             title="加入董事会"
             subtitle="存入GoCash股份赚取通胀奖励"
           />
@@ -105,7 +105,7 @@ const Boardroom: React.FC = () => {
         {!!account ? (
           <>
             <PageHeader
-              icon={'🤝'}
+              icon={<img src={require("../../assets/img/boardroom.png")} width="45%" height="90%"/>}
               title="加入董事会"
               subtitle="存入GoCash股份赚取通胀奖励"
             />
@@ -121,17 +121,17 @@ const Boardroom: React.FC = () => {
               />
             )}
               <Stat
-                icon="💵"
+                icon={<img src={require("../../assets/img/boardroom_price.png")} width="100%" height="100%"/>}
                 title={cashStat ? `$${cashStat.priceInDAI}` : '-'}
                 description="GOC 价格 (TWAP)"
               />
               <Stat
-                icon="🚀"
+                icon={<img src={require("../../assets/img/boardroom_factor.png")} width="100%" height="100%"/>}
                 title={scalingFactor ? `x${scalingFactor}` : '-'}
                 description="比例因子"
               />
               <Stat
-                icon="💰"
+                icon={<img src={require("../../assets/img/boardroom_treasury.png")} width="100%" height="100%"/>}
                 title={
                   treasuryAmount
                     ? `~$${Humanize.compactInteger(getBalance(treasuryAmount), 2)}`

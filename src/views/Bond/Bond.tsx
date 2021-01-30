@@ -76,7 +76,7 @@ const Bond: React.FC = () => {
           <>
             <Route exact path={path}>
               <PageHeader
-                icon={'🏦'}
+                icon={<img src={require("../../assets/img/bond.png")} width="50%" height="95%"/>}
                 title="购买和赎回债券"
                 subtitle="赎回时赚取收益"
               />
