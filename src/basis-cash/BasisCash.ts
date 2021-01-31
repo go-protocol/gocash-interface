@@ -414,8 +414,8 @@ export class BasisCash {
     const CurrentEpoch: BigNumber = await Treasury.getCurrentEpoch();
     const NextEpoch: BigNumber = await Treasury.getNextEpoch();
     const StartTime: BigNumber = await Treasury.getStartTime();
-
-    if( StartTime.mul(1000).toNumber() < Date.now() && CurrentEpoch >= NextEpoch){
+    
+    if( StartTime.mul(1000).toNumber() < Date.now() && CurrentEpoch.toNumber() >= NextEpoch.toNumber()){
       return true;
     }else{
       return false
