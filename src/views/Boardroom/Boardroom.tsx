@@ -86,7 +86,7 @@ const Boardroom: React.FC = () => {
       <Switch>
         <Page>
           <PageHeader
-            icon={<img src={require("../../assets/img/boardroom.png")} width="50%" height="95%"/>}
+            icon={<img src={require("../../assets/img/boardroom.png")} width="50%" height="95%" alt="boardroom"/>}
             title="加入董事会"
             subtitle="存入GoCash股份赚取通胀奖励"
           />
@@ -105,7 +105,7 @@ const Boardroom: React.FC = () => {
         {!!account ? (
           <>
             <PageHeader
-              icon={<img src={require("../../assets/img/boardroom.png")} width="45%" height="90%"/>}
+              icon={<img src={require("../../assets/img/boardroom.png")} width="45%" height="90%" alt="boardroom"/>}
               title="加入董事会"
               subtitle="存入GoCash股份赚取通胀奖励"
             />
@@ -121,17 +121,17 @@ const Boardroom: React.FC = () => {
               />
             )}
               <Stat
-                icon={<img src={require("../../assets/img/boardroom_price.png")} width="100%" height="100%"/>}
+                icon={<img src={require("../../assets/img/boardroom_price.png")} width="100%" height="100%" alt="boardroom_price"/>}
                 title={cashStat ? `$${cashStat.priceInDAI}` : '-'}
                 description="GOC 价格 (TWAP)"
               />
               <Stat
-                icon={<img src={require("../../assets/img/boardroom_factor.png")} width="100%" height="100%"/>}
+                icon={<img src={require("../../assets/img/boardroom_factor.png")} width="100%" height="100%" alt="boardroom_factor"/>}
                 title={scalingFactor ? `x${scalingFactor}` : '-'}
                 description="比例因子"
               />
               <Stat
-                icon={<img src={require("../../assets/img/boardroom_treasury.png")} width="100%" height="100%"/>}
+                icon={<img src={require("../../assets/img/boardroom_treasury.png")} width="100%" height="100%" alt="boardroom_treasury"/>}
                 title={
                   treasuryAmount
                     ? `~$${Humanize.compactInteger(getBalance(treasuryAmount), 2)}`
@@ -179,7 +179,9 @@ const Boardroom: React.FC = () => {
                 <Spacer size="lg" /></>)}
             </StyledBoardroom>
             <StyledLink href="https://www.goswap.app/#/add/0x36b29B53c483bd00978D40126E614bb7e45d8354/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6" target="_blank">
-              {`🦄  在GoSwap为GOS-HUSD LP交易对提供流动性  🦄`}
+            <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
+              {`  在GoSwap为GOS-HUSD LP交易对提供流动性   `}
+              <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash" style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
             </StyledLink>
           </>
         ) : (
@@ -199,10 +201,17 @@ const Boardroom: React.FC = () => {
   );
 };
 
-
+const StyledIcon = styled.div`
+  font-size: 28px;
+  width:24px;
+  height:24px;
+  padding-left:10px;
+  padding-right:5px;
+`;
 const StyledLink = styled.a`
   font-weight: 700;
   text-decoration: none;
+  display: inherit;
   color: ${(props) => props.theme.color.primary.main};
 `;
 

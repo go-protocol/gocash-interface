@@ -17,7 +17,7 @@ const Banks: React.FC = () => {
       <Page>
         <Route exact path={path}>
           <PageHeader
-            icon={<img src={require("../../assets/img/banks.png")} width="100%" height="48%" style={{position: "absolute",top: "35%",left:"0"}}/>}
+            icon={<img src={require("../../assets/img/banks.png")} width="100%" height="48%" alt="banks" style={{position: "absolute",top: "35%",left:"0"}}/>}
             title="选择一条赛道."
             subtitle="通过提供GoSwap流动性赚取收益"
           />

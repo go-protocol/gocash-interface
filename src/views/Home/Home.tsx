@@ -38,7 +38,7 @@ const Home: React.FC = () => {
   return (
     <Page>
       <PageHeader
-        icon={<img src={require("../../assets/img/goCash (3).png")} width="80%" height="100%"/>}
+        icon={<img src={require("../../assets/img/goCash (3).png")} width="80%" alt="goCash" height="100%"/>}
         subtitle="在GoSwap上购买，出售和提供GoCash现金和GoCash股份的流动性"
         title="欢迎来到 Go Cash!"
       />
