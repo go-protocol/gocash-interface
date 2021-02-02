@@ -24,7 +24,7 @@ const Bank: React.FC = () => {
   return account && bank ? (
     <>
       <PageHeader
-        icon="🏦"
+        icon={<img src={require("../../assets/img/bank.png")} width="80%" height="90%" alt="banks" style={{position: "absolute",top: "5%",left:"10%"}}/>}
         subtitle={`存入 ${bank?.depositTokenName} 赚取 ${bank?.earnTokenName}`}
         title={bank?.name}
       />
@@ -57,7 +57,9 @@ const Bank: React.FC = () => {
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   return (
     <StyledLink href={bank.pairUrl} target="_blank">
-      {`🦄  在GoSwap为 ${bank.pairName} 交易对提供流动性  🦄`}
+       <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
+      {`  在GoSwap为 ${bank.pairName} 交易对提供流动性  `}
+      <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
     </StyledLink>
   );
 };
@@ -82,7 +84,13 @@ const UnlockWallet = () => {
     </Center>
   );
 };
-
+const StyledIcon = styled.div`
+  font-size: 28px;
+  width:24px;
+  height:24px;
+  padding-left:10px;
+  padding-right:5px;
+`;
 const StyledBank = styled.div`
   align-items: center;
   display: flex;
@@ -99,6 +107,7 @@ const StyledBank = styled.div`
 const StyledLink = styled.a`
   font-weight: 700;
   text-decoration: none;
+  display: inherit;
   color: ${(props) => props.theme.color.primary.main};
 `;
 
