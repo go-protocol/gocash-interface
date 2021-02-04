@@ -178,7 +178,7 @@ const Boardroom: React.FC = () => {
               </div>
                 <Spacer size="lg" /></>)}
             </StyledBoardroom>
-            <StyledLink href="https://www.goswap.app/#/add/0x36b29B53c483bd00978D40126E614bb7e45d8354/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6" target="_blank">
+            <StyledLink href="https://www.goswap.app/#/add/0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E/0x0298c2b32eae4da002a15f36fdf7615bea3da047" target="_blank">
             <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
               {`  在GoSwap为GOS-HUSD LP交易对提供流动性   `}
               <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash" style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
