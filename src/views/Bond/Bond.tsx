@@ -94,7 +94,7 @@ const Bond: React.FC = () => {
                       ? '当GOC 低于 $1时'
                       : `${Math.floor(
                           100 / Number(bondStat.priceInDAI) - 100,
-                        )}% 当GOC 高于 $1时返还`
+                        )}% 当GOC 高于 $${BOND_REDEEM_PRICE}时返还`
                   }
                   onExchange={handleBuyBonds}
                   disabled={!bondStat || isBondRedeemable}
@@ -103,7 +103,7 @@ const Bond: React.FC = () => {
               <StyledStatsWrapper>
                 <ExchangeStat
                   tokenName="GOC"
-                  description="上一个小时TWAP价格"
+                  description="上一个周期TWAP价格"
                   price={getDisplayBalance(cashPrice, 18, 2)}
                 />
                 <Spacer size="md" />

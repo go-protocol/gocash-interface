@@ -19,8 +19,8 @@ const logosBySymbol: {[title: string]: string} = {
   'SUSD': sUSDLogo,
   'USDC': USDCLogo,
   'USDT': USDTLogo,
-  'GOC_HUSD-GLP': gocLogo,
-  'GOS_HUSD-GLP': gosLogo,
+  'GOC_HUSD-LP': gocLogo,
+  'GOS_HUSD-LP': gosLogo,
   'HT_HUSD-GLP': GOTLogo,
   'GOT_HUSD-GLP': GOTLogo,
 };

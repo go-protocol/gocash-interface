@@ -1,6 +1,6 @@
 {
   "BondOracle": {
-    "address": "0x0532E0185F3b6EE1E2a435FfdDFc2e0EDA6E73E5",
+    "address": "0x53906fBa68299450dfa3Fc2B59563882D8286e55",
     "abi": [
       {
         "inputs": [
@@ -457,7 +457,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0x0532E0185F3b6EE1E2a435FfdDFc2e0EDA6E73E5",
+    "address": "0x53906fBa68299450dfa3Fc2B59563882D8286e55",
     "abi": [
       {
         "inputs": [
@@ -1822,7 +1822,7 @@
     ]
   },
   "Share": {
-    "address": "0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E",
+    "address": "0x36b29B53c483bd00978D40126E614bb7e45d8354",
     "abi": [
       {
         "inputs": [],
@@ -2276,7 +2276,7 @@
     ]
   },
   "lpBoardroom": {
-    "address": "0xd798d6B2dD3766B55F9988a7109fE2380b7eD74f",
+    "address": "0x8899b4d77E06A33CBB940A3B20658c65e4295D52",
     "abi": [
       {
         "inputs": [
@@ -2818,7 +2818,7 @@
     ]
   },
   "shareBoardroom": {
-    "address": "0x24ebe1f560b0ee086bb2986042388bf9a5c04725",
+    "address": "0x834Ef52d85D457989001bD0dE830fbC4Bf7D6eFb",
     "abi": [
       {
         "inputs": [
@@ -3360,7 +3360,7 @@
     ]
   },
   "GosLp": {
-    "address": "0xdaDE2b002d135c5796f7cAAd544f9Bc043D05C9B",
+    "address": "0xd0E8D781fAe230E3DA6e45ED881c99BA639cA400",
     "abi": [
       {
         "inputs": [],
@@ -3814,7 +3814,7 @@
     ]
   },
   "Treasury": {
-    "address": "0xFdFAE0bBc56B9da0057B624A25b4c1d70584c863",
+    "address": "0x450362Da4e736F4abD252c65E33CD7bB15E5d31C",
     "abi": [
       {
         "inputs": [
@@ -4809,7 +4809,7 @@
     ]
   },
   "HUSDGOCLPTokenSharePool": {
-    "address": "0xC33F68fBBCB529faB10aB5FcFD77BaD7cE9fbfFA",
+    "address": "0xFdFAE0bBc56B9da0057B624A25b4c1d70584c863",
     "abi": [
       {
         "inputs": [

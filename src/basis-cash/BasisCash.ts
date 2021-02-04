@@ -49,7 +49,7 @@ export class BasisCash {
 
     // Uniswap V2 Pair
     this.bacDai = new Contract(
-      externalTokens['GOC_HUSD-GLP'][0],
+      externalTokens['GOC_HUSD-LP'][0],
       IUniswapV2PairABI,
       provider,
     );
@@ -115,7 +115,7 @@ export class BasisCash {
   async getCashOraclePriceInLastTWAP(): Promise<TokenStat> {
     const { SeigniorageOracle } = this.contracts;
 
-    const expectedPrice = await SeigniorageOracle.consult(
+    const expectedPrice = await SeigniorageOracle.expectedPrice(
       this.GOC.address,
       ethers.utils.parseEther('1'),
     );
