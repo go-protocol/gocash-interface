@@ -7,10 +7,10 @@ const Nav: React.FC = () => {
       <StyledLink href= {buyGOS} target="_blank">获取GoCash股份GOS</StyledLink>
       <StyledLink href= {buyGOC} target="_blank">获取GoCash现金GOC</StyledLink>
       <StyledLink href="https://github.com/go-protocol/gocash-core" target="_blank">GitHub</StyledLink>
-      {/* <StyledLink href="https://twitter.com/BasisCash" target="_blank">Twitter</StyledLink>
-      <StyledLink href="https://t.me/basiscash" target="_blank">Telegram</StyledLink>
-      <StyledLink href="https://discord.gg/UEZq3HF5Eu" target="_blank">Discord</StyledLink>
-      <StyledLink href="https://medium.com/basis-cash" target="_blank">Medium</StyledLink> */}
+      <StyledLink href="https://twitter.com/GoSwapio" target="_blank">Twitter</StyledLink>
+      <StyledLink href="https://t.me/Goswapio" target="_blank">Telegram</StyledLink>
+      <StyledLink href="https://discord.gg/skDprzw8Du" target="_blank">Discord</StyledLink>
+      <StyledLink href="https://medium.com/@goswapio" target="_blank">Medium</StyledLink>
     </StyledNav>
   )
 }
