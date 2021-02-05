@@ -115,6 +115,9 @@ const StyledButton = styled.button<StyledButtonProps>`
     background-color: ${props => props.color};
     color: ${props => props.theme.color.grey[900]};
   }
+  @media (max-width: 835px) {
+    font-size: 18px;
+  }
 `
 
 const StyledLink = styled(Link)`

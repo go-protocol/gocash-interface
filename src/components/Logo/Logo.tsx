@@ -23,6 +23,9 @@ const StyledLink = styled.a`
   font-size: 18px;
   font-weight: 700;
   margin-left: ${(props) => props.theme.spacing[2]}px;
+  @media (max-width: 835px) {
+    font-size: 23px;
+  }
 `;
 
 export default Logo;

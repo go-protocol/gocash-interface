@@ -35,6 +35,10 @@ const AccountButton: React.FC<AccountButtonProps> = (props) => {
   )
 }
 
-const StyledAccountButton = styled.div``
+const StyledAccountButton = styled.div`
+@media (max-width: 835px) {
+  font-size: 25px;
+}
+`
 
 export default AccountButton

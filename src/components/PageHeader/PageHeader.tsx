@@ -51,6 +51,9 @@ const StyledSubtitle = styled.h3`
   margin: 0;
   padding: 0;
   text-align: center;
+  @media (max-width: 835px) {
+    font-size: 25px;
+  }
 `
 
 export default PageHeader
