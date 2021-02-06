@@ -4,8 +4,8 @@ import styled from 'styled-components'
 const Nav: React.FC = () => {
   return (
     <StyledNav>
-      <StyledLink href= {buyGOS} target="_blank">获取GoCash股份GOS</StyledLink>
-      <StyledLink href= {buyGOC} target="_blank">获取GoCash现金GOC</StyledLink>
+      <StyledLink href= {buyGOS} target="_blank">获取GOS</StyledLink>
+      <StyledLink href= {buyGOC} target="_blank">获取GOC</StyledLink>
       <StyledLink href="https://github.com/go-protocol/gocash-core" target="_blank">GitHub</StyledLink>
       <StyledLink href="https://twitter.com/GoSwapio" target="_blank">Twitter</StyledLink>
       <StyledLink href="https://t.me/Goswapio" target="_blank">Telegram</StyledLink>
@@ -18,6 +18,9 @@ const Nav: React.FC = () => {
 const StyledNav = styled.nav`
   align-items: center;
   display: flex;
+  @media (max-width: 835px) {
+    margin-bottom:20px;
+  }
 `
 
 const StyledLink = styled.a`
