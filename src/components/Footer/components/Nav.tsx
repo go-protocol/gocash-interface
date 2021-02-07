@@ -32,6 +32,6 @@ const StyledLink = styled.a`
     color: ${props => props.theme.color.grey[500]};
   }
 `
-const buyGOS ="https://www.goswap.app/#/swap?inputCurrency=0x0298c2b32eae4da002a15f36fdf7615bea3da047&outputCurrency=0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E";
-const buyGOC= "https://www.goswap.app/#/swap?inputCurrency=0x0298c2b32eae4da002a15f36fdf7615bea3da047&outputCurrency=0x271B54EBe36005A7296894F819D626161C44825C"
+const buyGOS ="https://goswap.app/#/swap?inputCurrency=0x0298c2b32eae4da002a15f36fdf7615bea3da047&outputCurrency=0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E";
+const buyGOC= "https://goswap.app/#/swap?inputCurrency=0x0298c2b32eae4da002a15f36fdf7615bea3da047&outputCurrency=0x271B54EBe36005A7296894F819D626161C44825C"
 export default Nav
