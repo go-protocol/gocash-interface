@@ -61,7 +61,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'GOS',
     finished: false,
     pairName:'GOC-HUSD',
-    pairUrl:'https://www.goswap.app/#/add/0x271B54EBe36005A7296894F819D626161C44825C/0x0298c2b32eae4da002a15f36fdf7615bea3da047',
+    pairUrl:'https://goswap.app/#/add/0x271B54EBe36005A7296894F819D626161C44825C/0x0298c2b32eae4da002a15f36fdf7615bea3da047',
     sort: 1,
   },
   HUSDGOSLPTokenSharePool: {
@@ -71,7 +71,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'GOS',
     finished: false,
     pairName:'GOS-HUSD',
-    pairUrl:'https://www.goswap.app/#/add/0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E/0x0298c2b32eae4da002a15f36fdf7615bea3da047',
+    pairUrl:'https://goswap.app/#/add/0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E/0x0298c2b32eae4da002a15f36fdf7615bea3da047',
     sort: 2,
   },
   // HTHUSDLPTokenGOTPool: {
@@ -81,7 +81,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   //   earnTokenName: 'GOT',
   //   finished: false,
   //   pairName:'HT-HUSD',
-  //   pairUrl:'https://www.goswap.app/#/add/CURRENCY/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
+  //   pairUrl:'https://goswap.app/#/add/CURRENCY/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
   //   sort: 3,
   // },
   // GOTHUSDLPTokenGOTPool: {
@@ -91,7 +91,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   //   earnTokenName: 'GOT',
   //   finished: false,
   //   pairName:'GOT-HUSD',
-  //   pairUrl:'https://www.goswap.app/#/add/0xA7d5b5Dbc29ddef9871333AD2295B2E7D6F12391/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
+  //   pairUrl:'https://goswap.app/#/add/0xA7d5b5Dbc29ddef9871333AD2295B2E7D6F12391/0x0f548051B135fa8f7F6190cb78Fd13eCB544fEE6',
   //   sort: 4,
   // },
 };
