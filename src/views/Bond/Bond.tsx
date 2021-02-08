@@ -157,7 +157,7 @@ background-repeat: no-repeat;
 const StyledBond = styled.div`
   display: flex;
   width: 900px;
-  @media (max-width: 768px) {
+  @media (max-width: 835px) {
     width: 100%;
     flex-flow: column nowrap;
     align-items: center;
@@ -168,7 +168,7 @@ const StyledCardWrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  @media (max-width: 768px) {
+  @media (max-width: 835px) {
     width: 80%;
   }
 `;
@@ -179,7 +179,7 @@ const StyledStatsWrapper = styled.div`
   margin: 0 20px;
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 835px) {
     width: 80%;
     margin: 16px 0;
   }

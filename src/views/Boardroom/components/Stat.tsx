@@ -47,6 +47,9 @@ const StyledCardContentInner = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  @media (max-width: 835px) {
+    margin-top:10px;
+  }
   flex-direction: row;
   padding: ${(props) => props.theme.spacing[2]}px ${(props) => props.theme.spacing[4]}px;
 `;
