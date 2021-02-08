@@ -374,12 +374,14 @@ export class BasisCash {
 
   async canWithdrawTimeFromBoardroom(): Promise<BigNumber> {
     const Boardroom = this.currentBoardroom();
-    return await Boardroom.getCanWithdrawTime(this.myAccount);
+    const WithdrawTime: BigNumber = await Boardroom.getCanWithdrawTime(this.myAccount);
+    return WithdrawTime.add(28800);
   }
 
   async canWithdrawTimeFromLpBoardroom(): Promise<BigNumber> {
     const Boardroom = this.currentLpBoardroom();
-    return await Boardroom.getCanWithdrawTime(this.myAccount);
+    const WithdrawTime: BigNumber = await Boardroom.getCanWithdrawTime(this.myAccount);
+    return WithdrawTime.add(28800);
   }
 
   async harvestCashFromBoardroom(): Promise<TransactionResponse> {
