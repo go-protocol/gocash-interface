@@ -31,7 +31,13 @@ const TopBar: React.FC = () => {
   )
 }
 
-const StyledTopBar = styled.div``
+const StyledTopBar = styled.div`
+background: #000;
+    opacity: 0.7;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    `
 
 const StyledTopBarInner = styled.div`
   align-items: center;

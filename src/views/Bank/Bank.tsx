@@ -24,7 +24,7 @@ const Bank: React.FC = () => {
   return account && bank ? (
     <>
       <PageHeader
-        icon={<img src={require("../../assets/img/bank.png")} width="80%" height="90%" alt="banks" style={{position: "absolute",top: "5%",left:"10%"}}/>}
+        // icon={<img src={require("../../assets/img/bank.png")} width="80%" height="90%" alt="banks" style={{position: "absolute",top: "5%",left:"10%"}}/>}
         subtitle={`存入 ${bank?.depositTokenName} 赚取 ${bank?.earnTokenName}`}
         title={bank?.name}
       />

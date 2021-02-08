@@ -18,6 +18,7 @@ import ExchangeStat from './components/ExchangeStat';
 import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../basis-cash/constants';
+import background_3 from '../../assets/img/background_3.jpg';
 
 const Bond: React.FC = () => {
   const { path } = useRouteMatch();
@@ -70,13 +71,14 @@ const Bond: React.FC = () => {
     );
   }
   return (
+    <Background>
     <Switch>
       <Page>
         {!!account ? (
           <>
             <Route exact path={path}>
               <PageHeader
-                icon={<img src={require("../../assets/img/bond.png")} width="50%" height="95%" alt="bond"/>}
+                // icon={<img src={require("../../assets/img/bond.png")} width="50%" height="95%" alt="bond"/>}
                 title="购买和赎回债券"
                 subtitle="赎回时赚取收益"
               />
@@ -142,9 +144,16 @@ const Bond: React.FC = () => {
         )}
       </Page>
     </Switch>
+    </Background>
   );
 };
 
+const Background = styled.div`
+background: url(${background_3});
+background-size: cover;
+background-repeat: no-repeat;
+  }
+`;
 const StyledBond = styled.div`
   display: flex;
   width: 900px;

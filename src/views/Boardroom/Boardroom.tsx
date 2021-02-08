@@ -32,6 +32,7 @@ import useCanAllocateSeigniorage from '../../hooks/useCanAllocateSeigniorage';
 import Notice from '../../components/Notice';
 import useBoardroomVersion from '../../hooks/useBoardroomVersion';
 import moment from 'moment';
+import background_4 from '../../assets/img/background_4.jpg';
 
 const Boardroom: React.FC = () => {
   // useEffect(() => window.scrollTo(0, 0));
@@ -86,7 +87,7 @@ const Boardroom: React.FC = () => {
       <Switch>
         <Page>
           <PageHeader
-            icon={<img src={require("../../assets/img/boardroom.png")} width="50%" height="95%" alt="boardroom"/>}
+            // icon={<img src={require("../../assets/img/boardroom.png")} width="50%" height="95%" alt="boardroom"/>}
             title="加入董事会"
             subtitle="存入GoCash股份赚取通胀奖励"
           />
@@ -100,12 +101,14 @@ const Boardroom: React.FC = () => {
     );
   }
   return (
+    <>
+    <Background/>
     <Switch>
       <Page>
         {!!account ? (
           <>
             <PageHeader
-              icon={<img src={require("../../assets/img/boardroom.png")} width="45%" height="90%" alt="boardroom"/>}
+              // icon={<img src={require("../../assets/img/boardroom.png")} width="45%" height="90%" alt="boardroom"/>}
               title="加入董事会"
               subtitle="存入GoCash股份赚取通胀奖励"
             />
@@ -198,9 +201,20 @@ const Boardroom: React.FC = () => {
         )}
       </Page>
     </Switch>
+    </>
   );
 };
 
+const Background = styled.div`
+background: url(${background_4});
+background-repeat: no-repeat;
+width: 100%;
+background-size: 100% auto;
+z-index: -3;
+height: 100%;
+position: fixed;
+  }
+`;
 const StyledIcon = styled.div`
   font-size: 28px;
   width:24px;

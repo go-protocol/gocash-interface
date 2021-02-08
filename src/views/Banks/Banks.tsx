@@ -7,17 +7,19 @@ import BankCards from './BankCards';
 import { useWallet } from 'use-wallet';
 import Button from '../../components/Button';
 import styled from 'styled-components';
+import background_2 from '../../assets/img/background_2.jpg';
 
 const Banks: React.FC = () => {
   const { path } = useRouteMatch();
   const { account, connect } = useWallet();
 
   return (
+    <Background>
     <Switch>
       <Page>
         <Route exact path={path}>
           <PageHeader
-            icon={<img src={require("../../assets/img/banks.png")} width="100%" height="48%" alt="banks" style={{position: "absolute",top: "35%",left:"0"}}/>}
+            // icon={<img src={require("../../assets/img/banks.png")} width="100%" height="48%" alt="banks" style={{position: "absolute",top: "35%",left:"0"}}/>}
             title="选择一条赛道."
             subtitle="通过提供GoSwap流动性赚取收益"
           />
@@ -34,9 +36,16 @@ const Banks: React.FC = () => {
         </Route>
       </Page>
     </Switch>
+    </Background>
   );
 };
 
+const Background = styled.div`
+background: url(${background_2});
+background-size: cover;
+background-repeat: no-repeat;
+  }
+`;
 const Center = styled.div`
   display: flex;
   flex: 1;

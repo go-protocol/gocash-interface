@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface PageHeaderProps {
-  icon: React.ReactNode,
+  icon?: React.ReactNode,
   subtitle?: string,
   title?: string,
 }
