@@ -143,24 +143,6 @@ const Boardroom: React.FC = () => {
             <StyledBoardroom>
               <StyledCardsWrapper>
                 <StyledCardWrapper>
-                  <Harvest />
-                </StyledCardWrapper>
-                <Spacer />
-                <StyledCardWrapper>
-                  <Stake />
-                </StyledCardWrapper>
-              </StyledCardsWrapper>
-              <Spacer size="lg" />
-              {canWithdraw && (<><div>
-                <Button
-                  disabled={stakedBalance.eq(0)}
-                  onClick={onRedeem}
-                  text="取出本金和收益"
-                />
-              </div>
-                <Spacer size="lg" /></>)}
-              <StyledCardsWrapper>
-                <StyledCardWrapper>
                   <LpHarvest />
                 </StyledCardWrapper>
                 <Spacer />
@@ -173,6 +155,24 @@ const Boardroom: React.FC = () => {
                 <Button
                   disabled={stakedLpBalance.eq(0)}
                   onClick={onLpRedeem}
+                  text="取出本金和收益"
+                />
+              </div>
+                <Spacer size="lg" /></>)}
+              <StyledCardsWrapper>
+                <StyledCardWrapper>
+                  <Harvest />
+                </StyledCardWrapper>
+                <Spacer />
+                <StyledCardWrapper>
+                  <Stake />
+                </StyledCardWrapper>
+              </StyledCardsWrapper>
+              <Spacer size="lg" />
+              {canWithdraw && (<><div>
+                <Button
+                  disabled={stakedBalance.eq(0)}
+                  onClick={onRedeem}
                   text="取出本金和收益"
                 />
               </div>
