@@ -13,7 +13,7 @@ const ExchangeStat: React.FC<ExchangeStatProps> = ({ tokenName, description, pri
     <Card>
       <StyledCardContentInner>
         <StyledCardTitle>
-        <StyledIcon>{<img src={require("../../../assets/img/bond_price.png")} width="80%" height="100%" alt="bond_price"/>}</StyledIcon>
+        <StyledIcon>{<img src={require("../../../assets/img/bond_price.png")} width="100%" height="80%" alt="bond_price"/>}</StyledIcon>
           {` ${tokenName} = $${price}`}</StyledCardTitle>
         <StyledDesc>{description}</StyledDesc>
       </StyledCardContentInner>

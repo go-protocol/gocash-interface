@@ -34,7 +34,7 @@ const StyledDesc = styled.span`
 
 const StyledIcon = styled.div`
   font-size: 28px;
-  width:40px;
+  width:56px;
   margin-right: 10px;
 `;
 
