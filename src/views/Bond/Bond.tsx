@@ -41,6 +41,8 @@ const Bond: React.FC = () => {
     [basisCash, addTransaction, cashPrice],
   );
 
+  const priceInDai = bondStat?.priceInDAI ? (Math.floor(Number(bondStat?.priceInDAI) * 100) / 100).toString() : '0'
+
   const handleRedeemBonds = useCallback(
     async (amount: string) => {
       const tx = await basisCash.redeemBonds(amount);
@@ -112,7 +114,7 @@ const Bond: React.FC = () => {
                 <ExchangeStat
                   tokenName="GOB"
                   description="当前价格: (GOC)^2"
-                  price={bondStat?.priceInDAI || '-'}
+                  price={priceInDai}
                 />
               </StyledStatsWrapper>
               <StyledCardWrapper>
