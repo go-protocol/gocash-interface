@@ -42,8 +42,12 @@ const Banks: React.FC = () => {
 
 const Background = styled.div`
 background: url(${background_2});
-background-size: cover;
 background-repeat: no-repeat;
+width: 100%;
+background-size: 100% auto;
+z-index: -3;
+height: 100%;
+position: fixed;
   }
 `;
 const Center = styled.div`
