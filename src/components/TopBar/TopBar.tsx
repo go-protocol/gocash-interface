@@ -13,9 +13,9 @@ const TopBar: React.FC = () => {
     <StyledTopBar>
       <Container size="lg">
         <StyledTopBarInner>
-          <div style={{ flex: 1 }}>
+          <StyledTopLogo>
             <Logo />
-          </div>
+          </StyledTopLogo>
           <Nav />
           <div style={{
             flex: 1,
@@ -38,6 +38,13 @@ background: #000;
     width: 100%;
     z-index: 9999;
     `
+
+    const StyledTopLogo = styled.div`
+    flex:1;
+    @media (max-width: 835px) {
+      flex:0;
+    }
+        `
 
 const StyledTopBarInner = styled.div`
   align-items: center;
