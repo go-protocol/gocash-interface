@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Container from '../Container'
 import Logo from '../Logo'
-
+import I18nSwitch from '../I18nSwitch'
 import AccountButton from './components/AccountButton'
 import Nav from './components/Nav'
 import TxButton from './components/TxButton'
@@ -25,6 +25,7 @@ const TopBar: React.FC = () => {
             <TxButton />
             <AccountButton />
           </div>
+          <I18nSwitch />
         </StyledTopBarInner>
       </Container>
     </StyledTopBar>

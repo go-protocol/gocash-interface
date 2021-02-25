@@ -12,6 +12,7 @@ import Stake from './components/Stake';
 import useBank from '../../hooks/useBank';
 import useRedeem from '../../hooks/useRedeem';
 import { Bank as BankEntity } from '../../basis-cash';
+import { useTranslation } from 'react-i18next';
 
 const Bank: React.FC = () => {
   // useEffect(() => window.scrollTo(0, 0));
@@ -20,12 +21,12 @@ const Bank: React.FC = () => {
   const bank = useBank(bankId);
   const { account } = useWallet();
   const { onRedeem } = useRedeem(bank);
-
+  const { t } = useTranslation()
   return account && bank ? (
     <>
       <PageHeader
         // icon={<img src={require("../../assets/img/bank.png")} width="80%" height="90%" alt="banks" style={{position: "absolute",top: "5%",left:"10%"}}/>}
-        subtitle={`存入 ${bank?.depositTokenName} 赚取 ${bank?.earnTokenName}`}
+        subtitle={`${t("deposit")} ${bank?.depositTokenName} ${t("earn")} ${bank?.earnTokenName}`}
         title={bank?.name}
       />
       <StyledBank>
@@ -42,7 +43,7 @@ const Bank: React.FC = () => {
          <LPTokenHelpText bank={bank} />
         <Spacer size="lg" />
         <div>
-          <Button onClick={onRedeem} text="取出本金和收益" />
+          <Button onClick={onRedeem} text={t("withdrawalofprincipalandincome")} />
         </div>
         <Spacer size="lg" />
       </StyledBank>
@@ -55,10 +56,11 @@ const Bank: React.FC = () => {
 };
 
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
+  const { t } = useTranslation()
   return (
     <StyledLink href={bank.pairUrl} target="_blank">
        <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
-      {`  在GoSwap为 ${bank.pairName} 交易对提供流动性  `}
+      {`  ${t("onswap")} ${bank.pairName} ${t("tradingliquidity")}  `}
       <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
     </StyledLink>
   );
@@ -78,9 +80,10 @@ const BankNotFound = () => {
 
 const UnlockWallet = () => {
   const { connect } = useWallet();
+  const { t } = useTranslation()
   return (
     <Center>
-      <Button onClick={() => connect('injected')} text="解锁钱包" />
+      <Button onClick={() => connect('injected')} text={t("unlockwallet")} />
     </Center>
   );
 };

@@ -6,6 +6,8 @@ import {
   toggleWalletModal,
   toggleSettingsMenu,
   updateBlockNumber,
+  ApplicationModal,
+  setOpenModal,
 } from './actions';
 
 type PopupList = Array<{
@@ -20,6 +22,7 @@ export interface ApplicationState {
   popupList: PopupList;
   walletModalOpen: boolean;
   settingsMenuOpen: boolean;
+  openModal: ApplicationModal | null
 }
 
 const initialState: ApplicationState = {
@@ -27,6 +30,7 @@ const initialState: ApplicationState = {
   popupList: [],
   walletModalOpen: false,
   settingsMenuOpen: false,
+  openModal:null
 };
 
 export default createReducer(initialState, (builder) =>
@@ -38,6 +42,9 @@ export default createReducer(initialState, (builder) =>
       } else {
         state.blockNumber[chainId] = Math.max(blockNumber, state.blockNumber[chainId]);
       }
+    })
+    .addCase(setOpenModal, (state, action) => {
+      state.openModal = action.payload
     })
     .addCase(toggleWalletModal, (state) => {
       state.walletModalOpen = !state.walletModalOpen;

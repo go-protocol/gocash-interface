@@ -9,6 +9,7 @@ import CardIcon from '../../components/CardIcon';
 import useBanks from '../../hooks/useBanks';
 import TokenSymbol from '../../components/TokenSymbol';
 import Notice from '../../components/Notice';
+import { useTranslation } from 'react-i18next';
 
 const BankCards: React.FC = () => {
   const [banks] = useBanks();
@@ -74,6 +75,13 @@ interface BankCardProps {
 }
 
 const BankCard: React.FC<BankCardProps> = ({ bank }) => {
+  const { t } = useTranslation()
+  var title=bank.name;
+  if(bank.name==="曲率引擎赛道"){
+title=t("bankgoc")
+  }else if(bank.name==="引力弹弓赛道"){
+    title=t("bankgos")
+  }
   return (
     <StyledCardWrapper>
       {bank.depositTokenName.includes('LP') &&
@@ -88,12 +96,12 @@ const BankCard: React.FC<BankCardProps> = ({ bank }) => {
             <CardIcon>
               <TokenSymbol symbol={bank.depositTokenName} size={54} />
             </CardIcon>
-            <StyledTitle>{bank.name}</StyledTitle>
+            <StyledTitle>{title}</StyledTitle>
             <StyledDetails>
-              <StyledDetail>存入 {bank.depositTokenName.toUpperCase()}</StyledDetail>
-              <StyledDetail>赚取 {`${bank.earnTokenName}`}</StyledDetail>
+              <StyledDetail>{t("deposit")} {bank.depositTokenName.toUpperCase()}</StyledDetail>
+              <StyledDetail>{t("earn")} {`${bank.earnTokenName}`}</StyledDetail>
             </StyledDetails>
-            <Button text="加入" to={`/bank/${bank.contract}`} />
+            <Button text={t("join")} to={`/bank/${bank.contract}`} />
           </StyledContent>
         </CardContent>
       </Card>

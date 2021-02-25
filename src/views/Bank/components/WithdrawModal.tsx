@@ -8,6 +8,7 @@ import TokenInput from '../../../components/TokenInput'
 
 import { getFullDisplayBalance } from '../../../utils/formatBalance'
 import { BigNumber } from 'ethers';
+import { useTranslation } from 'react-i18next'
 
 interface WithdrawModalProps extends ModalProps {
   max: BigNumber,
@@ -18,7 +19,7 @@ interface WithdrawModalProps extends ModalProps {
 
 const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max, tokenName = '', decimals = 18 }) => {
   const [val, setVal] = useState('')
-
+  const { t } = useTranslation()
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max, decimals)
   }, [max,decimals])
@@ -33,7 +34,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
 
   return (
     <Modal>
-      <ModalTitle text={`提款 ${tokenName}`} />
+      <ModalTitle text={`${t("drawing")} ${tokenName}`} />
       <TokenInput
         onSelectMax={handleSelectMax}
         onChange={handleChange}
@@ -42,8 +43,8 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
         symbol={tokenName}
       />
       <ModalActions>
-        <Button text="取消" variant="secondary" onClick={onDismiss} />
-        <Button text="确认" onClick={() => onConfirm(val)} />
+        <Button text={t("cancel")} variant="secondary" onClick={onDismiss} />
+        <Button text={t("confirm")} onClick={() => onConfirm(val)} />
       </ModalActions>
     </Modal>
   )

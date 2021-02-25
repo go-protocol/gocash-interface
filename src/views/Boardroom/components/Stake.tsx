@@ -26,6 +26,7 @@ import useWithdrawFromBoardroom from '../../../hooks/useWithdrawFromBoardroom';
 import useBoardroomVersion from '../../../hooks/useBoardroomVersion';
 // import useRedeemOnBoardroom from '../../../hooks/useRedeemOnBoardroom';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 const Stake: React.FC = () => {
   const basisCash = useBasisCash();
@@ -45,9 +46,8 @@ const Stake: React.FC = () => {
   const withdrawUnix = canWithdrawTime.toNumber() - moment().unix();
   const withdrawHour = Math.floor(withdrawUnix / 3600)
   const withdrawMinus = Math.floor((withdrawUnix - withdrawHour * 3600) / 60);
-
-  const withdrawTime = useMemo(() => withdrawUnix > 0 && withdrawHour + "小时" + withdrawMinus + "分钟后可以取款", [withdrawHour,withdrawMinus]);
-
+  const { t } = useTranslation()
+  const withdrawTime = useMemo(() => withdrawUnix > 0 && withdrawHour + t("hour") + withdrawMinus + t("min"), [withdrawHour,withdrawMinus,withdrawUnix,t]);
   const [onPresentDeposit, onDismissDeposit] = useModal(
     <DepositModal
       max={tokenBalance}
@@ -55,7 +55,7 @@ const Stake: React.FC = () => {
         onStake(value);
         onDismissDeposit();
       }}
-      tokenName={'GoCash 股份'}
+      tokenName={t("gos")}
     />,
   );
 
@@ -66,7 +66,7 @@ const Stake: React.FC = () => {
         onWithdraw(value);
         onDismissWithdraw();
       }}
-      tokenName={'GoCash股份GOS'}
+      tokenName={t("gos1")}
     />,
   );
 
@@ -79,7 +79,7 @@ const Stake: React.FC = () => {
               <TokenSymbol symbol="GOS" />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance)} />
-            <Label text="GoCash股份GOS质押" />
+            <Label text={t("gosp")} />
             {!canWithdraw && (
                     <Label text={withdrawTime} />
             )}
@@ -89,7 +89,7 @@ const Stake: React.FC = () => {
               <Button
                 disabled={approveStatus !== ApprovalState.NOT_APPROVED}
                 onClick={approve}
-                text="批准GoCash股份GOS"
+                text={t("gos3")}
               />
             ) : (
                 <>

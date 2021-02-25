@@ -11,11 +11,12 @@ import CardIcon from '../../../components/CardIcon';
 import useHarvestFromLpBoardroom from '../../../hooks/useHarvestFromLpBoardroom';
 import useEarningsOnLpBoardroom from '../../../hooks/useEarningsOnLpBoardroom';
 import { getDisplayBalance } from '../../../utils/formatBalance';
+import { useTranslation } from 'react-i18next';
 
 const Harvest: React.FC = () => {
   const { onReward } = useHarvestFromLpBoardroom();
   const earnings = useEarningsOnLpBoardroom();
-
+  const { t } = useTranslation()
   return (
     <Card>
       <CardContent>
@@ -25,10 +26,10 @@ const Harvest: React.FC = () => {
               <TokenSymbol symbol="GOC" />
             </CardIcon>
             <Value value={getDisplayBalance(earnings)} />
-            <Label text="赚到GoCash现金" />
+            <Label text={t("earngoc")} />
           </StyledCardHeader>
           <StyledCardActions>
-            <Button onClick={onReward} text="收获奖励" disabled={earnings.eq(0)} />
+            <Button onClick={onReward} text={t("earn4")} disabled={earnings.eq(0)} />
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>

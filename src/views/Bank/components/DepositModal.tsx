@@ -8,6 +8,7 @@ import TokenInput from '../../../components/TokenInput'
 
 import { getFullDisplayBalance } from '../../../utils/formatBalance'
 import { BigNumber } from 'ethers';
+import { useTranslation } from 'react-i18next'
 
 interface DepositModalProps extends ModalProps {
   max: BigNumber,
@@ -18,7 +19,7 @@ interface DepositModalProps extends ModalProps {
 
 const DepositModal: React.FC<DepositModalProps> = ({ max, decimals, onConfirm, onDismiss, tokenName = '' }) => {
   const [val, setVal] = useState('')
-
+  const { t } = useTranslation()
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max, decimals)
   }, [max,decimals])
@@ -33,7 +34,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, decimals, onConfirm, o
 
   return (
     <Modal>
-      <ModalTitle text={`存入 ${tokenName}`} />
+      <ModalTitle text={`${t("deposit")} ${tokenName}`} />
       <TokenInput
         value={val}
         onSelectMax={handleSelectMax}
@@ -42,8 +43,8 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, decimals, onConfirm, o
         symbol={tokenName}
       />
       <ModalActions>
-        <Button text="取消" variant="secondary" onClick={onDismiss} />
-        <Button text="确认" onClick={() => onConfirm(val)} />
+        <Button text={t("cancel")} variant="secondary" onClick={onDismiss} />
+        <Button text={t("confirm")} onClick={() => onConfirm(val)} />
       </ModalActions>
     </Modal>
   )

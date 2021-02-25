@@ -33,6 +33,7 @@ import Notice from '../../components/Notice';
 import useBoardroomVersion from '../../hooks/useBoardroomVersion';
 import moment from 'moment';
 import background_4 from '../../assets/img/background_4.jpg';
+import { useTranslation } from 'react-i18next';
 
 const Boardroom: React.FC = () => {
   // useEffect(() => window.scrollTo(0, 0));
@@ -43,7 +44,7 @@ const Boardroom: React.FC = () => {
   const stakedLpBalance = useStakedBalanceOnLpBoardroom();
   const { canWithdraw } = useWithdrawFromBoardroom();
   const { canWithdrawLp } = useWithdrawFromLpBoardroom();
-
+  const { t } = useTranslation()
   const cashStat = useCashPriceInEstimatedTWAP();
   const treasuryAmount = useTreasuryAmount();
   const scalingFactor = useMemo(
@@ -88,12 +89,12 @@ const Boardroom: React.FC = () => {
         <Page>
           <PageHeader
             // icon={<img src={require("../../assets/img/boardroom.png")} width="50%" height="95%" alt="boardroom"/>}
-            title="加入董事会"
-            subtitle="存入GoCash股份赚取通胀奖励"
+            title={t("joinboard")}
+            subtitle={t("gosearngoc")}
           />
           <LaunchCountdown
             deadline={config.boardroomLaunchesAt}
-            description="我们是怎样工作的?"
+            description={t("howwork")}
             descriptionLink="https://docs.basis.cash/mechanisms/stabilization-mechanism#expansionary-policy"
           />
         </Page>
@@ -109,8 +110,8 @@ const Boardroom: React.FC = () => {
           <>
             <PageHeader
               // icon={<img src={require("../../assets/img/boardroom.png")} width="45%" height="90%" alt="boardroom"/>}
-              title="加入董事会"
-              subtitle="存入GoCash股份赚取通胀奖励"
+              title={t("joinboard")}
+              subtitle={t("gosearngoc")}
             />
             {migrateNotice}
             <StyledHeader>
@@ -120,18 +121,18 @@ const Boardroom: React.FC = () => {
               <ProgressCountdown
                 base={prevEpoch}
                 deadline={nextEpoch}
-                description="下一通胀周期"
+                description={t("inflationcycle")}
               />
             )}
               <Stat
                 icon={<img src={require("../../assets/img/boardroom_price.png")} width="100%" height="100%" alt="boardroom_price"/>}
                 title={cashStat ? `$${cashStat.priceInDAI}` : '-'}
-                description="GOC 价格 (TWAP)"
+                description={"GOC "+t("price")+" (TWAP)"}
               />
               <Stat
                 icon={<img src={require("../../assets/img/boardroom_factor.png")} width="100%" height="100%" alt="boardroom_factor"/>}
                 title={scalingFactor ? `x${scalingFactor}` : '-'}
-                description="比例因子"
+                description={t("scalefactor")}
               />
               <Stat
                 icon={<img src={require("../../assets/img/boardroom_treasury.png")} width="100%" height="100%" alt="boardroom_treasury"/>}
@@ -140,7 +141,7 @@ const Boardroom: React.FC = () => {
                     ? `~$${Humanize.compactInteger(getBalance(treasuryAmount), 2)}`
                     : '-'
                 }
-                description="国库金额"
+                description={t("treasuryamount")}
               />
             </StyledHeader>
             <StyledBoardroom>
@@ -158,7 +159,7 @@ const Boardroom: React.FC = () => {
                 <Button
                   disabled={stakedLpBalance.eq(0)}
                   onClick={onLpRedeem}
-                  text="取出本金和收益"
+                  text={t("withdrawalofprincipalandincome")}
                 />
               </div>
                 <Spacer size="lg" /></>)}
@@ -176,14 +177,14 @@ const Boardroom: React.FC = () => {
                 <Button
                   disabled={stakedBalance.eq(0)}
                   onClick={onRedeem}
-                  text="取出本金和收益"
+                  text={t("withdrawalofprincipalandincome")}
                 />
               </div>
                 <Spacer size="lg" /></>)}
             </StyledBoardroom>
             <StyledLink href="https://goswap.app/#/add/0x3bb34419a8E7d5E5c68B400459A8eC1AFfe9c56E/0x0298c2b32eae4da002a15f36fdf7615bea3da047" target="_blank">
             <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash"  style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
-              {`  在GoSwap为GOS-HUSD LP交易对提供流动性   `}
+              {`  ${t("boardroom1")}   `}
               <StyledIcon>{<img src={require("../../assets/img/gocash.png")} width="80%" height="80%" alt="gocash" style={{position:"relative",top:"-5px"}}/>}</StyledIcon>
             </StyledLink>
           </>
@@ -196,7 +197,7 @@ const Boardroom: React.FC = () => {
               justifyContent: 'center',
             }}
           >
-            <Button onClick={() => connect('injected')} text="解锁钱包" />
+            <Button onClick={() => connect('injected')} text={t("unlockwallet")} />
           </div>
         )}
       </Page>

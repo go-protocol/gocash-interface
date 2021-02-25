@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import { useWallet } from 'use-wallet';
@@ -13,7 +14,7 @@ interface AccountButtonProps {}
 
 const AccountButton: React.FC<AccountButtonProps> = (props) => {
   const [onPresentAccountModal] = useModal(<AccountModal />)
-  
+  const { t } = useTranslation()
   const { account, connect } = useWallet()
 
   return (
@@ -22,13 +23,13 @@ const AccountButton: React.FC<AccountButtonProps> = (props) => {
         <Button
           onClick={() => connect('injected')}
           size="sm"
-          text="解锁钱包"
+          text={t("unlockwallet")}
         />
       ) : (
         <Button
           onClick={onPresentAccountModal}
           size="sm"
-          text="我的钱包"
+          text={t("mywallet")}
         />
       )}
     </StyledAccountButton>

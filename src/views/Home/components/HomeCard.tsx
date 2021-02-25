@@ -6,6 +6,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import TokenSymbol from '../../../components/TokenSymbol';
 import { commify } from 'ethers/lib/utils';
 import config from '../../../config';
+import { useTranslation } from 'react-i18next';
 
 interface HomeCardProps {
   title: string;
@@ -25,6 +26,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   stat,
 }) => {
   const tokenUrl = `${config.etherscanUrl}/token/${address}`;
+  const { t } = useTranslation()
   return (
     <Wrapper>
       <CardHeader>{title}</CardHeader>
@@ -36,7 +38,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
           ) : (
             <ValueSkeleton />
           )}
-          <Label text="当前价格" color={color} />
+          <Label text={t("currentprice")} color={color} />
         </CardSection>
 
         <CardSection>

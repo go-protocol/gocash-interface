@@ -16,6 +16,7 @@ import useHarvest from '../../../hooks/useHarvest';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import TokenSymbol from '../../../components/TokenSymbol';
 import { Bank } from '../../../basis-cash';
+import { useTranslation } from 'react-i18next';
 
 interface HarvestProps {
   bank: Bank;
@@ -24,6 +25,7 @@ interface HarvestProps {
 const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnings = useEarnings(bank.contract);
   const { onReward } = useHarvest(bank);
+  const { t } = useTranslation()
   return (
     <Card>
       <CardContent>
@@ -33,10 +35,10 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
               <TokenSymbol symbol={bank.earnToken.symbol} />
             </CardIcon>
             <Value value={getDisplayBalance(earnings)} />
-            <Label text={`赚到的${bank.earnTokenName}`} />
+            <Label text={`${t("earned")}${bank.earnTokenName}`} />
           </StyledCardHeader>
           <StyledCardActions>
-            <Button onClick={onReward} disabled={earnings.eq(0)} text="收获"  />
+            <Button onClick={onReward} disabled={earnings.eq(0)} text={t("earn1")}  />
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>

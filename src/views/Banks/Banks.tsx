@@ -8,11 +8,12 @@ import { useWallet } from 'use-wallet';
 import Button from '../../components/Button';
 import styled from 'styled-components';
 import background_2 from '../../assets/img/background_2.jpg';
+import { useTranslation } from 'react-i18next';
 
 const Banks: React.FC = () => {
   const { path } = useRouteMatch();
   const { account, connect } = useWallet();
-
+  const { t } = useTranslation()
   return (
     <Background>
     <Switch>
@@ -20,14 +21,14 @@ const Banks: React.FC = () => {
         <Route exact path={path}>
           <PageHeader
             // icon={<img src={require("../../assets/img/banks.png")} width="100%" height="48%" alt="banks" style={{position: "absolute",top: "35%",left:"0"}}/>}
-            title="选择一条赛道."
-            subtitle="通过提供GoSwap流动性赚取收益"
+            title={t("selectBank")}
+            subtitle={t("banksub1")}
           />
           {!!account ? (
             <BankCards />
           ) : (
             <Center>
-              <Button onClick={() => connect('injected')} text="解锁钱包" />
+              <Button onClick={() => connect('injected')} text={t("unlockwallet")} />
             </Center>
           )}
         </Route>

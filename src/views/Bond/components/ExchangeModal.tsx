@@ -7,6 +7,7 @@ import TokenInput from '../../../components/TokenInput';
 import { getFullDisplayBalance } from '../../../utils/formatBalance';
 import { BigNumber } from 'ethers';
 import Label from '../../../components/Label';
+import { useTranslation } from 'react-i18next';
 
 interface ExchangeModalProps extends ModalProps {
   max: BigNumber;
@@ -37,7 +38,7 @@ const ExchangeModal: React.FC<ExchangeModalProps> = ({
   const handleSelectMax = useCallback(() => {
     setVal(fullBalance);
   }, [fullBalance, setVal]);
-
+  const { t } = useTranslation()
   return (
     <Modal>
       <ModalTitle text={title} />
@@ -50,7 +51,7 @@ const ExchangeModal: React.FC<ExchangeModalProps> = ({
       />
       <Label text={description} />
       <ModalActions>
-        <Button text="取消" variant="secondary" onClick={onDismiss} />
+        <Button text={t("cancel")} variant="secondary" onClick={onDismiss} />
         <Button text={action} onClick={() => onConfirm(val)} />
       </ModalActions>
     </Modal>

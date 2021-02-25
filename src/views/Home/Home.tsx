@@ -8,11 +8,12 @@ import { OverviewData } from './types';
 import useBasisCash from '../../hooks/useBasisCash';
 import config from '../../config';
 import background_1 from '../../assets/img/background_1.jpg';
+import { useTranslation } from 'react-i18next';
 // import Notice from '../../components/Notice';
 
 const Home: React.FC = () => {
   const basisCash = useBasisCash();
-
+  const { t } = useTranslation()
   const [{ cash, bond, share }, setStats] = useState<OverviewData>({});
   const fetchStats = useCallback(async () => {
     const [cash, bond, share] = await Promise.all([
@@ -43,32 +44,34 @@ const Home: React.FC = () => {
     <Page>
       <PageHeader
         // icon={<img src={require("../../assets/img/goCash (3).png")} width="80%" alt="goCash" height="100%"/>}
-        subtitle="在GoSwap上购买，出售和提供GoCash现金和GoCash股份的流动性"
-        title="欢迎来到 Go Cash!"
+        subtitle={t("homesubtitle1")}
+        title={t("hometitle1")}
       />
       <Spacer size="md" />
       <CardWrapper>
         <HomeCard
-          title="GoCash现金"
+          title={t("hometitle2")}
           symbol="GOC"
           color="#EEA7ED"
-          supplyLabel="循环供应"
+          supplyLabel={t("totalsupply")}
           address={cashAddr}
           stat={cash}
         />
         <Spacer size="lg" />
         <HomeCard
-          title="GoCash股份"
+          title={t("hometitle3")}
           symbol="GOS"
           color="#E83725"
+          supplyLabel={t("totalsupply")}
           address={shareAddr}
           stat={share}
         />
         <Spacer size="lg" />
         <HomeCard
-          title="GoCash债券"
+          title={t("hometitle4")}
           symbol="GOB"
           color="#ECF25C"
+          supplyLabel={t("totalsupply")}
           address={bondAddr}
           stat={bond}
         />

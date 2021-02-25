@@ -19,6 +19,7 @@ import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../basis-cash/constants';
 import background_3 from '../../assets/img/background_3.jpg';
+import { useTranslation } from 'react-i18next';
 
 const Bond: React.FC = () => {
   const { path } = useRouteMatch();
@@ -27,7 +28,7 @@ const Bond: React.FC = () => {
   const addTransaction = useTransactionAdder();
   const bondStat = useBondStats();
   const cashPrice = useBondOraclePriceInLastTWAP();
-
+  const { t } = useTranslation()
   const bondBalance = useTokenBalance(basisCash?.GOB);
 
   const handleBuyBonds = useCallback(
@@ -35,10 +36,10 @@ const Bond: React.FC = () => {
       const tx = await basisCash.buyBonds(amount);
       const bondAmount = Number(amount) / Number(getDisplayBalance(cashPrice));
       addTransaction(tx, {
-        summary: `使用 ${amount} GOC 购买 ${bondAmount.toFixed(2)} GOB`,
+        summary: `${t("use")} ${amount} GOC ${t("buy")} ${bondAmount.toFixed(2)} GOB`,
       });
     },
-    [basisCash, addTransaction, cashPrice],
+    [basisCash, addTransaction, cashPrice,t],
   );
 
   const priceInDai = bondStat?.priceInDAI ? (Math.floor(Number(bondStat?.priceInDAI) * 100) / 100).toString() : '0'
@@ -46,9 +47,9 @@ const Bond: React.FC = () => {
   const handleRedeemBonds = useCallback(
     async (amount: string) => {
       const tx = await basisCash.redeemBonds(amount);
-      addTransaction(tx, { summary: `赎回 ${amount} GOB` });
+      addTransaction(tx, { summary: `${t("redeem")} ${amount} GOB` });
     },
-    [basisCash, addTransaction],
+    [basisCash, addTransaction,t],
   );
   const isBondRedeemable = useMemo(() => cashPrice.gt(BOND_REDEEM_PRICE_BN), [cashPrice]);
   const isBondPurchasable = useMemo(() => Number(bondStat?.priceInDAI) < 1.0, [bondStat]);
@@ -60,12 +61,12 @@ const Bond: React.FC = () => {
         <Page>
           <PageHeader
             icon={<img src={require("../../assets/img/bond.png")} width="50%" height="95%" alt="bond"/>}
-            title="购买和赎回债券"
-            subtitle="赎回时赚取收益"
+            title={t("buyandredeem")}
+            subtitle={t("redeemandearn")}
           />
           <LaunchCountdown
             deadline={config.bondLaunchesAt}
-            description="我们是怎样工作的?"
+            description={t("howwork")}
             descriptionLink="https://docs.basis.cash/mechanisms/stabilization-mechanism"
           />
         </Page>
@@ -81,24 +82,24 @@ const Bond: React.FC = () => {
             <Route exact path={path}>
               <PageHeader
                 // icon={<img src={require("../../assets/img/bond.png")} width="50%" height="95%" alt="bond"/>}
-                title="购买和赎回债券"
-                subtitle="赎回时赚取收益"
+                title={t("buyandredeem")}
+                subtitle={t("redeemandearn")}
               />
             </Route>
             <StyledBond>
               <StyledCardWrapper>
                 <ExchangeCard
-                  action="采购"
+                  action={t("buy")}
                   fromToken={basisCash.GOC}
-                  fromTokenName="现金GOC"
+                  fromTokenName={t("cashgoc")}
                   toToken={basisCash.GOB}
-                  toTokenName="债券GOB"
+                  toTokenName={t("bondgob")}
                   priceDesc={
                     !isBondPurchasable
-                      ? '当GOC 低于 $1时'
+                      ? t("gocdown")
                       : `${Math.floor(
                           100 / Number(bondStat.priceInDAI) - 100,
-                        )}% 当GOC 高于 $${BOND_REDEEM_PRICE}时返还`
+                        )}% ${t("gocup")} $${BOND_REDEEM_PRICE}${t("return")}`
                   }
                   onExchange={handleBuyBonds}
                   disabled={!bondStat || isBondRedeemable}
@@ -107,27 +108,27 @@ const Bond: React.FC = () => {
               <StyledStatsWrapper>
                 <ExchangeStat
                   tokenName="GOC"
-                  description="上一个周期TWAP价格"
+                  description={t("cycle")}
                   price={getDisplayBalance(cashPrice, 18, 2)}
                 />
                 <Spacer size="md" />
                 <ExchangeStat
                   tokenName="GOB"
-                  description="当前价格: (GOC)^2"
+                  description={t("currentprice")+": (GOC)^2"}
                   price={priceInDai}
                 />
               </StyledStatsWrapper>
               <StyledCardWrapper>
                 <ExchangeCard
-                  action="赎回"
+                  action={t("buy")}
                   fromToken={basisCash.GOB}
-                  fromTokenName="债券GOB"
+                  fromTokenName={t("bondgob")}
                   toToken={basisCash.GOC}
-                  toTokenName="现金GOC"
-                  priceDesc={`${getDisplayBalance(bondBalance)} GOB活跃中`}
+                  toTokenName={t("cashgoc")}
+                  priceDesc={`${getDisplayBalance(bondBalance)} GOB${t("active")}`}
                   onExchange={handleRedeemBonds}
                   disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
-                  disabledDescription={!isBondRedeemable ? `当GOC > $${BOND_REDEEM_PRICE}时可赎回` : null}
+                  disabledDescription={!isBondRedeemable ? `${t("whengoc")} > $${BOND_REDEEM_PRICE}${t("return")}` : null}
                 />
               </StyledCardWrapper>
             </StyledBond>
@@ -141,7 +142,7 @@ const Bond: React.FC = () => {
               justifyContent: 'center',
             }}
           >
-            <Button onClick={() => connect('injected')} text="解锁钱包" />
+            <Button onClick={() => connect('injected')} text={t("unlockwallet")} />
           </div>
         )}
       </Page>

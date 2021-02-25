@@ -9,13 +9,14 @@ import ModalActions from '../../ModalActions';
 import Spacer from '../../Spacer';
 import { isTransactionRecent, useAllTransactions, useClearAllTransactions } from '../../../state/transactions/hooks';
 import { Trash } from 'react-feather';
+import { useTranslation } from 'react-i18next';
 
 const MAX_TRANSACTION_HISTORY = 10;
 
 const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const allTransactions = useAllTransactions();
   const { clearAllTransactions } = useClearAllTransactions();
-
+  const { t } = useTranslation()
   const sortedRecentTransactions = useMemo(() => {
     const txs = Object.values(allTransactions);
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst);
@@ -30,7 +31,7 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
   return (
     <StyledModal>
       <StyledTitleArea>
-        <StyledModalTitle>交易记录</StyledModalTitle>
+        <StyledModalTitle>{t("transactionrecords")}</StyledModalTitle>
         {confirmed?.length > 0 && (
           <StyledClearIconWrapper>
             <Trash onClick={clearAllTransactions} size="16" />
@@ -39,7 +40,7 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
       </StyledTitleArea>
       {pending?.length > 0 && (
         <>
-          <Label text="处理中的交易" />
+          <Label text={t("transactionsinprocess")} />
           <StyledTransactionList>
             {pending.map(tx => <Transaction key={tx.hash} tx={tx} />)}
           </StyledTransactionList>
@@ -48,17 +49,17 @@ const TxModal: React.FC<ModalProps> = ({ onDismiss }) => {
       )}
       {confirmed?.length > 0 && (
         <>
-          <Label text="当前的交易" />
+          <Label text={t("currenttransactions")} />
           <StyledTransactionList>
             {confirmed.map(tx => <Transaction key={tx.hash} tx={tx} />)}
           </StyledTransactionList>
         </>
       )}
       {isEmpty && (
-        <Label text="没有交易" color="#777" />
+        <Label text={t("nodeal")} color="#777" />
       )}
       <ModalActions>
-        <Button text="关闭" onClick={onDismiss} />
+        <Button text={t("close")} onClick={onDismiss} />
       </ModalActions>
     </StyledModal>
   )

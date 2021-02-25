@@ -9,10 +9,11 @@ import Modal, { ModalProps } from '../../Modal';
 import ModalTitle from '../../ModalTitle';
 import useBasisCash from '../../../hooks/useBasisCash';
 import TokenSymbol from '../../TokenSymbol';
+import { useTranslation } from 'react-i18next';
 
 const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const basisCash = useBasisCash();
-
+  const { t } = useTranslation()
   const bacBalance = useTokenBalance(basisCash.GOC);
   const displayBacBalance = useMemo(() => getDisplayBalance(bacBalance), [bacBalance]);
 
@@ -24,7 +25,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
   return (
     <Modal>
-      <ModalTitle text="我的钱包" />
+      <ModalTitle text={t("mywallet")} />
 
       <Balances>
         <StyledBalanceWrapper>

@@ -12,10 +12,20 @@ export type PopupContent = {
   };
 };
 
+export enum ApplicationModal {
+  WALLET,
+  SETTINGS,
+  SELF_CLAIM,
+  ADDRESS_CLAIM,
+  CLAIM_POPUP,
+  MENU,
+  I18N
+}
+
 export const updateBlockNumber = createAction<{ chainId: number; blockNumber: number }>(
   'app/updateBlockNumber',
 );
-
+export const setOpenModal = createAction<ApplicationModal | null>('application/setOpenModal')
 export const toggleWalletModal = createAction<void>('app/toggleWalletModal');
 
 export const toggleSettingsMenu = createAction<void>('app/toggleSettingsMenu');

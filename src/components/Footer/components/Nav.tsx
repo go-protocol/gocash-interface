@@ -1,11 +1,13 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 const Nav: React.FC = () => {
+  const { t } = useTranslation()
   return (
     <StyledNav>
-      <StyledLink href= {buyGOS} target="_blank">获取GOS</StyledLink>
-      <StyledLink href= {buyGOC} target="_blank">获取GOC</StyledLink>
+      <StyledLink href= {buyGOS} target="_blank">{t("buygos")}</StyledLink>
+      <StyledLink href= {buyGOC} target="_blank">{t("buygoc")}</StyledLink>
       <StyledLink href="https://github.com/go-protocol/gocash-core" target="_blank">GitHub</StyledLink>
       <StyledLink href="https://twitter.com/GoSwapio" target="_blank">Twitter</StyledLink>
       <StyledLink href="https://t.me/Goswapio" target="_blank">Telegram</StyledLink>

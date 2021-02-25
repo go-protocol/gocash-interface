@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -44,6 +44,7 @@ const App: React.FC = () => {
 
 const Providers: React.FC = ({ children }) => {
   return (
+    <Suspense fallback={null}>
     <ThemeProvider theme={theme}>
       <UseWalletProvider chainId={config.chainId}>
         <Provider store={store}>
@@ -61,6 +62,7 @@ const Providers: React.FC = ({ children }) => {
         </Provider>
       </UseWalletProvider>
     </ThemeProvider>
+    </Suspense>
   );
 };
 

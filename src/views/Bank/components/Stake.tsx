@@ -23,6 +23,7 @@ import DepositModal from './DepositModal';
 import WithdrawModal from './WithdrawModal';
 import TokenSymbol from '../../../components/TokenSymbol';
 import { Bank } from '../../../basis-cash';
+import { useTranslation } from 'react-i18next';
 
 interface StakeProps {
   bank: Bank;
@@ -61,7 +62,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
       tokenName={bank.depositTokenName}
     />,
   );
-
+  const { t } = useTranslation()
   return (
     <Card>
       <CardContent>
@@ -71,7 +72,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
               <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
-            <Label text={`质押的${bank.depositTokenName}`} />
+            <Label text={`${t("pledged")}${bank.depositTokenName}`} />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -81,7 +82,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   approveStatus === ApprovalState.UNKNOWN
                 }
                 onClick={approve}
-                text={`批准 ${bank.depositTokenName}`}
+                text={`${t("approval")} ${bank.depositTokenName}`}
               />
             ) : (
               <>

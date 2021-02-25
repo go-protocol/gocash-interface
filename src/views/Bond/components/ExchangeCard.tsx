@@ -15,6 +15,7 @@ import ERC20 from '../../../basis-cash/ERC20';
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import useApprove, { ApprovalState } from '../../../hooks/useApprove';
 import useCatchError from '../../../hooks/useCatchError';
+import { useTranslation } from 'react-i18next';
 
 interface ExchangeCardProps {
   action: string;
@@ -59,6 +60,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
       tokenName={fromTokenName}
     />,
   );
+  const { t } = useTranslation()
   return (
     <Card>
       <CardContent>
@@ -89,8 +91,8 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
                   approveStatus === ApprovalState.PENDING ||
                   approveStatus === ApprovalState.UNKNOWN
                 }
-                onClick={() => catchError(approve(), `不能批准 ${fromTokenName}`)}
-                text={`批准 ${fromTokenName}`}
+                onClick={() => catchError(approve(), `${t("refuse")} ${fromTokenName}`)}
+                text={`${t("approval")} ${fromTokenName}`}
               />
             ) : (
               <Button

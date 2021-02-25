@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
+import styled, { css } from 'styled-components';
 
 import farmer from '../../assets/img/farmer.png';
 
 const Logo: React.FC = () => {
+  const { t } = useTranslation()
   return (
-    <StyledLogo>
+    <StyledLogo about={t("gocash")}>
       <img src={farmer} height="32" style={{ marginTop: -4 }} alt=""/>
       <StyledLink href="/">GoCash</StyledLink>
     </StyledLogo>
@@ -15,6 +17,16 @@ const Logo: React.FC = () => {
 const StyledLogo = styled.div`
   align-items: center;
   display: flex;
+  ${props => {
+    if (props.about==="Home") {
+      return css`
+      @media (max-width: 835px) {
+       display:none;
+      }
+        `
+    } 
+  }
+  }
 `;
 
 const StyledLink = styled.a`

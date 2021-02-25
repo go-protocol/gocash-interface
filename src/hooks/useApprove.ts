@@ -3,6 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { useHasPendingApproval, useTransactionAdder } from '../state/transactions/hooks';
 import useAllowance from './useAllowance';
 import ERC20 from '../basis-cash/ERC20';
+import { useTranslation } from 'react-i18next';
 
 const APPROVE_AMOUNT = ethers.constants.MaxUint256;
 const APPROVE_BASE_AMOUNT = BigNumber.from('1000000000000000000000000');
@@ -33,22 +34,21 @@ function useApprove(token: ERC20, spender: string): [ApprovalState, () => Promis
   }, [currentAllowance, pendingApproval]);
 
   const addTransaction = useTransactionAdder();
-
+  const { t } = useTranslation()
   const approve = useCallback(async (): Promise<void> => {
     if (approvalState !== ApprovalState.NOT_APPROVED) {
       console.error('approve was called unnecessarily');
       return;
     }
-
     const response = await token.approve(spender, APPROVE_AMOUNT);
     addTransaction(response, {
-      summary: `批准 ${token.symbol}`,
+      summary: `${t("approval")} ${token.symbol}`,
       approval: {
         tokenAddress: token.address,
         spender: spender,
       },
     });
-  }, [approvalState, token, spender, addTransaction]);
+  }, [approvalState, token, spender, addTransaction,t]);
 
   return [approvalState, approve];
 }
