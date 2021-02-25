@@ -82,10 +82,8 @@ const MenuItem = styled(ExternalLink)`
   }
 `
 
-// const CODE_LINK = 'https://github.com/KodamaSakuno/uniswap-interface'
 
 export default function I18nSwitch() {
-  // const { account } = useActiveWeb3React()
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
@@ -97,7 +95,6 @@ export default function I18nSwitch() {
   useOnClickOutside(node, open ? toggle : undefined)
 
   return (
-    // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     <StyledMenu ref={node as any}>
       <StyledMenuButton onClick={toggle}>
         <StyledI18nIcon />
