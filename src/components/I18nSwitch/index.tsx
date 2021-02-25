@@ -24,7 +24,7 @@ const StyledMenuButton = styled.button`
   height: 35px;
   color: ${({ theme }) => (theme.isDarkMode ? theme.text1 : theme.text1)};
   fill: ${({ theme }) => (theme.isDarkMode ? theme.text1 : theme.text1)};
-  background-color: ${({ theme }) => (theme.isDarkMode ? theme.primary1 : theme.bg3)};
+  background-color:white;
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
