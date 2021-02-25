@@ -30,7 +30,6 @@ const StyledLink = styled(NavLink)`
   padding-left: ${props => props.theme.spacing[3]}px;
   padding-right: ${props => props.theme.spacing[3]}px;
   ${props => {
-    console.log(props.exact)
     if (props.exact) {
       return css`
       @media (max-width: 835px) {

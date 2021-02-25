@@ -49,7 +49,7 @@
   "bondgob":"债券GOB",
   "gocdown":"当GOC 低于 $1时",
   "gocup":"当GOC 高于",
-  "return":"时返还",
+  "returna":"时返还",
   "whengoc":"当GOC",
   "active":"活跃中",
   "cycle":"上一个周期的TWAP价格",

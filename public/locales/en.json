@@ -49,7 +49,7 @@
   "bondgob":"bonds GOB",
   "gocdown":"when GOC lower than $1",
   "gocup":"when GOC higher than",
-  "return":"return",
+  "returna":"return",
   "whengoc":"when GOC",
   "active":" active",
   "cycle":"Price of last cycle of TWAP",

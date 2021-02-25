@@ -99,7 +99,7 @@ const Bond: React.FC = () => {
                       ? t("gocdown")
                       : `${Math.floor(
                           100 / Number(bondStat.priceInDAI) - 100,
-                        )}% ${t("gocup")} $${BOND_REDEEM_PRICE}${t("return")}`
+                        )}% ${t("gocup")} $${BOND_REDEEM_PRICE}${t("returna")}`
                   }
                   onExchange={handleBuyBonds}
                   disabled={!bondStat || isBondRedeemable}
@@ -128,7 +128,7 @@ const Bond: React.FC = () => {
                   priceDesc={`${getDisplayBalance(bondBalance)} GOB${t("active")}`}
                   onExchange={handleRedeemBonds}
                   disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
-                  disabledDescription={!isBondRedeemable ? `${t("whengoc")} > $${BOND_REDEEM_PRICE}${t("return")}` : null}
+                  disabledDescription={!isBondRedeemable ? `${t("whengoc")} > $${BOND_REDEEM_PRICE}${t("returna")}` : null}
                 />
               </StyledCardWrapper>
             </StyledBond>
