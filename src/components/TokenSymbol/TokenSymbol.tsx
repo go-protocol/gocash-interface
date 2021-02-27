@@ -3,6 +3,7 @@ import React from 'react';
 import gocLogo from '../../assets/img/goswap-GOC.svg';
 import gosLogo from '../../assets/img/goswap-GOS.svg';
 import gobLogo from '../../assets/img/goswap-GOB.svg';
+import BONDPOOL from '../../assets/img/goswap-GOB.svg';
 import yCRVLogo from '../../assets/img/ycrv.png';
 import DAILogo from '../../assets/img/DAI.png';
 import sUSDLogo from '../../assets/img/sUSD.png';
@@ -21,7 +22,7 @@ const logosBySymbol: {[title: string]: string} = {
   'USDT': USDTLogo,
   'GOC_HUSD-LP': gocLogo,
   'GOS_HUSD-LP': gosLogo,
-  'HT_HUSD-GLP': GOTLogo,
+  'BOND-HUSD-LP': BONDPOOL,
   'GOT_HUSD-GLP': GOTLogo,
 };
 
