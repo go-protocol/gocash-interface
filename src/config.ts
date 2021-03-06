@@ -7,7 +7,7 @@ import { BankInfo } from './basis-cash';
 const configurations: { [env: string]: Configuration } = {
   development: {
     chainId: ChainId.HECOTEST,
-    etherscanUrl: 'https://scan-testnet.hecochain.com',
+    etherscanUrl: 'https://testnet.hecoinfo.com',
     defaultProvider: 'https://http-testnet.hecochain.com',
     deployments: require('./basis-cash/deployments/deployments.testnet.json'),
     externalTokens: {
@@ -30,7 +30,7 @@ const configurations: { [env: string]: Configuration } = {
   },
   production: {
     chainId: ChainId.HECOMAIN,
-    etherscanUrl: 'https://scan.hecochain.com',
+    etherscanUrl: 'https://hecoinfo.com',
     defaultProvider: 'https://http-mainnet.hecochain.com',
     deployments: require('./basis-cash/deployments/deployments.mainnet.json'),
     externalTokens: {
