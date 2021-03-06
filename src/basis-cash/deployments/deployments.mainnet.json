@@ -5700,8 +5700,8 @@
       }
     ]
   },
-  "HTHUSDLPTokenGOTPool": {
-    "address": "0xA0998816b0338d2529a95379C686fb2e38590501",
+  "BONDREWARDPOOL": {
+    "address": "0x36af011A70FcC7D38fDb5E147268Aa0210977408",
     "abi": [
       {
         "inputs": [
